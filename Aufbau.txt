@@ -12,20 +12,18 @@ Gliederung:
 	3. Verbesserte Algorithmen zur Pfadplanung
 		* Dijkstra's Algorithm
 		* Bellman-Ford 
-		* A* Algorithm
 		* Anwendungen
 
 	MARIUS:
-		* Möglichkeiten zur Optimierung -> z.B. PreProcessing
-	4. Zusammenfassung und Ausblick
+	4. Möglichkeiten zur Optimierung
+
+
+	DAVID:
+	5. Zusammenfassung und Ausblick
 	
 
 	
 
-
-Weitere Ideen: 
-	* Multi-agent pathfinding 
-	* incremental heuristic search Algorithmen (z.B. D*)
 
 
 			

@@ -1,8 +1,17 @@
 \chapter{Einleitung und Problemstellung}
 
-Begonnen werden soll mit einer Einleitung zum Thema, also Hintergrund und Ziel erläutert werden.
+Unter Pathfinding bzw. Wegfindung versteht man in der Informatik die algorithmengestütze Suche nach dem optimalen Weg(en) von einem Startpunkt zu einem oder mehreren Zielpunkten. 
+In diesem Paper werden wir verschiedene Pfadplanungsalgorithmen wie den Dijkstra-Algorithmus und seine Variante, die häufig in Verkehrleitsystemen wie etwa Google Maps verwendet werden.
 
-Weiterhin wird das vorliegende Problem diskutiert: Was ist zu lösen, warum ist es wichtig, dass man dieses Problem löst und welche Lösungsansätze gibt es bereits. Der Bezug auf vorhandene oder eben bisher fehlende Lösungen begründet auch die Intention und Bedeutung dieser Arbeit. Dies können allgemeine Gesichtspunkte sein: Man liefert einen Beitrag für ein generelles Problem oder man hat eine spezielle Systemumgebung oder ein spezielles Produkt (z.B. in einem Unternehmen), woraus sich dieses noch zu lösende Problem ergibt.
+Um die Geschwindigkeit des Dijkstra-Algorithmus bei Blindsuchen zu optimieren werden A* und seine Varianten als Stand der Technik-Algorithmen für den Einsatz in statischen Umgebungen vorgestellt [Salah:2] 
 
-Im weiteren Verlauf wird die Problemstellung konkret dargestellt: Was ist spezifisch zu lösen? Welche Randbedingungen sind gegeben und was ist die Zielsetzung? Letztere soll das
-beschreiben, was man mit dieser Arbeit (mindestens) erreichen möchte.
+Das Thema Funktionsprinzipien und Anwendungen von Algorithmen zur Pfadplanung hat damals, wie heute einen wichtigen Stellenwert. 
+Ob im Bereich der Netzwerkroutenplanung oder bei KI-Spielern in Computerspielen Pfadsuchalgorithmen sind so relevant wie nie. 
+Weitere Beispiele für die Anwendung von Pfadsuchalgroithmen sind Robotik (z.B. Pakete im Logistikbereich), Planung von öffentlichen Verkehrsmitteln und Routenplanung von Navigationssystemen. 
+Viele Bereiche im Alltag verwenden im Hintergrund Pfadsuchalgorithmen um den (kosten)günstigsten Weg zu finden, dabei ist es wichtig, dass diese effizient, akkurat und schnell sein müssen, 
+damit die Hauptsysteme noch genügen Ressourcen übrig haben um gewünscht zu funktionieren. \cite{Foeada:21}
+
+Wir werden uns in diesem Paper die Funktionsweise der wichtigsten Pfadsuchalgorithmen, angefangen mit den „einfachen“ uninformierten Suchalgorithmen wie der Breiten- oder Tiefensuche, 
+welche einen ersten Einblick in die Thematik geben sollen und die Rahmenbedingungen und Problemumgebungen veranschaulichen sollen; 
+Bis hin zu durch Heuristiken optimierte und informierte Pfadsuchalgorithmen wie Dijsktra oder A*, die häufig in Verkehrleitsystemen wie etwa Google Maps verwendet werden, und wie sie in heutiger Zeit 
+sonst eingesetzt werden können, veranschaulichen und jeweils (Pseudo-)Code- und Anwendungsbeispiele geben.\cite{Russell:10}

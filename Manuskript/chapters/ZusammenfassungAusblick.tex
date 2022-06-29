@@ -1,3 +1,29 @@
 \chapter{Zusammenfassung und Ausblick}
 
-In diesem Kapitel soll die Arbeit noch einmal kurz zusammengefasst werden. Insbesondere sollen die wesentlichen Ergebnisse Ihrer Arbeit herausgehoben werden. Erfahrungen, die z.B. Benutzer mit der Mensch-Maschine-Schnittstelle gemacht haben oder Ergebnisse von Leistungsmessungen sollen an dieser Stelle präsentiert werden. Sie können in diesem Kapitel auch die Ergebnisse oder das Arbeitsumfeld Ihrer Arbeit kritisch bewerten. Wünschenswerte Erweiterungen sollen als Hinweise auf weiterführende Arbeiten erwähnt werden.
+In diesem Paper wurden Methoden vorgestellt, die ein Akteur zur Auswahl von Aktionen in Umgebungen wie z.B Graphen verwenden kann, 
+die deterministisch, beobachtbar, statisch und vollständig bekannt sind. 
+Mit diesen Methoden kann der Akteur durch eine Sequenz von Aktionen sein Ziel erreichen. Diesen Prozess nennt man Suche.
+\begin{itemize}
+    \item Bevor ein Akteur mit der Suche nach Lösungen beginnen kann, muss ein Ziel identifiziert und ein Problem genau definiert Problem werden.
+    \item Ein Problem besteht aus fünf Teilen: - dem Ausgangszustand, - einer Reihe von Aktionen, - einem Übergangsmodell, das die Ergebnisse dieser Aktionen beschreibt, - einer Zielüberprüfungsfunktion - und einer Pfadkostenfunktion. Das Problem wird durch eine Menge an Zuständen dargestellt. Ein Pfad der aus der Zustandsmenge besteht und vom Start zum  Ziel führt ist eine Lösung.
+    \item Suchalgorithmen behandeln Zustände und Aktionen atomar: Sie berücksichtigen keine interne Struktur, die sie besitzen könnten.
+    \item Ein allgemeiner TREE-SEARCH-Algorithmus berücksichtigt alle möglichen Wege, um eine Lösung zu finden, während ein GRAPH-SEARCH-Algorithmus redundante Wege vermeidet.
+    \item Suchalgorithmen werden auf der Grundlage von Vollständigkeit, Optimalität, Zeit- und Raumkomplexität beurteilt. Die Komplexität hängt von b, dem Verzweigungsfaktor im Zustandsraum, und d, der Tiefe der tiefsten Lösung, ab.
+    \item Uninformierte Suchmethoden haben nur Zugriff auf die Problemdefinition. Die grundlegenden Algorithmen sind wie folgt:
+    \begin{itemize}
+        \item Die Breadth-first-Suche expandiert zuerst die flachsten Knoten; sie ist vollständig, optimal für einheitliche Pfadkosten, hat aber eine exponentielle Raumkomplexität.
+        \item Die Uniform-Cost-Suche expandiert den Knoten mit den niedrigsten Pfadkosten, g(n), und ist optimal für allgemeine Pfadkosten.
+        \item Die Tiefensuche expandiert zuerst den tiefsten nicht expandierten Knoten. Sie ist weder vollständig noch optimal, hat aber eine lineare Raumkomplexität.
+        \item Die iterative Vertiefungssuche ist eine Wiederholung der Tiefensuche mit zunehmender Tiefenbegrenzung, bis ein Ziel gefunden wird. Sie ist vollständig, optimal für die Kosten pro Schritt, hat eine vergleichbare Zeitkomplexität wie die Breitensuche und eine lineare Raumkomplexität.
+        \item Die bidirektionale Suche kann die Zeitkomplexität enorm reduzieren, ist aber nicht immer anwendbar und kann zu viel Speicherplatz beanspruchen.
+    \end{itemize}
+    \item Informierte Suchmethoden können auf eine heuristische Funktion h(n) zurückgreifen, die die Kosten einer Lösung aus n schätzt.
+    \begin{itemize}
+        \item Der generische Best-First-Suchalgorithmus wählt einen Knoten für die Expansion gemäß einer Bewertungsfunktion aus.
+        \item Der Greedy best-first search expandiert Knoten mit minimalem h(n). Er ist nicht optimal, aber oft effizient.
+        \item A*-Suche expandiert Knoten mit minimalem f (n) = g(n) + h(n). A* ist vollständig und optimal, vorausgesetzt, h(n) ist zulässig (für TREE-SEARCH) oder konsistent (für GRAPH-SEARCH).
+        \item RBFS (rekursive Best-First-Suche) und SMA* (vereinfachtes speicherbegrenztes A*) sind robuste, optimale Suchalgorithmen, die nur begrenzte Mengen an Speicher verwenden; mit genügend Zeit können sie Probleme lösen, die A* nicht lösen kann, weil ihm der Speicher ausgeht.
+        \item Die Leistung von heuristischen Suchalgorithmen hängt von der Qualität der heuristischen Funktion ab. Manchmal kann man gute Heuristiken konstruieren, indem man die Problemdefinition lockert und vorberechnete Lösungskosten für Teilprobleme in einer Musterdatenbank speichert.
+    \end{itemize}
+\end{itemize}
+\cite{Russell:10}

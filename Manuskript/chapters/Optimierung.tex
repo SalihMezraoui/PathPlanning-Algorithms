@@ -13,12 +13,82 @@ Ein Ansatz, um effizienter Lösungen für das Shortest Path Problem zu finden, i
 
 Die einfachste Umsetzung dieser Strategie ist, nur die heuristische Funktion bei der Bewertung von Knoten heranzuziehen, sodass $f(n)=h(n)$ gilt. Dieses Vorgehen wird auch Greedy Best-First Suche genannt, da in jedem Schritt versucht wird, so nahe wie möglich an den Zielknoten zu gelangen \cite{Russel2010}. Auf diese Weise werden die Suchkosten, also die Anzahl der expandierten Knoten zwar minimiert, es kann jedoch nicht garantiert werden, dass die gefundene Lösung optimal ist \cite{Heusner2017}.
 
-Eine elaboriertere Umsetzung der Informed Search Strategie ist der A*-Algorithmus zur Berechnung des kürzesten Pfades zwischen zwei Knoten \cite{Russel2010}. A* basiert auf Dijkstra’s Algorithmus und erweitert diesen um eine heuristische Funktion, um die Laufzeit zu reduzieren \cite{Peralta2020}. Die Bewertungsfunktion $f(n)$ für den A*-Algorithmus setzt sich zusammen aus den Kosten des optimalen Pfades vom Startknoten bis zum Knoten n, $g(n)$ und einer heuristischen Funktion $h(n)$, sodass gilt:
-\begin{align}
+Eine elaboriertere Umsetzung der Informed Search Strategie ist der A* Algorithmus zur Berechnung des kürzesten Pfades zwischen zwei Knoten \cite{Russel2010}. A* basiert auf Dijkstra’s Algorithmus und erweitert diesen um eine heuristische Funktion, um die Laufzeit zu reduzieren \cite{Peralta2020}. Die Bewertungsfunktion $f(n)$ für den A*-Algorithmus setzt sich zusammen aus den Kosten des optimalen Pfades vom Startknoten bis zum Knoten n, $g(n)$ und einer heuristischen Funktion $h(n)$, sodass gilt:
+\begin{equation} \label{eq:3.1}
 	f(n)=g(n)+h(n)
-\end{align}
+\end{equation}
 
 Da verschiedene Heuristiken zur Konstruktion von h(n) gewählt werden können, stellt A* streng genommen eine Familie von Algorithmen dar, wobei die Wahl einer Funktion h(n) einen spezifischen Algorithmus der Familie selektiert \cite{Hart1968}. 
+
 Hart, Nilsson und Raphael, die in \cite{Hart1968} die A*-Suche 1968 zum ersten Mal beschrieben haben, konnten nachweisen, dass A* vollständig und optimal ist, wenn die gewählte Heuristik zulässig und konsistent ist. Das heißt, dass unter den angegebenen Voraussetzungen für die Heuristik, immer ein Pfad vom Start- zum Zielknoten gefunden wird (sofern dieser existiert) und dass dieser Pfad in jedem Fall optimal ist. Des Weiteren konnte gezeigt werden, dass A* optimal effizient ist – es kann also keinen anderen optimalen Algorithmus geben, der garantiert weniger Knoten expandiert als A* \cite{Russel2010}.
+
+\section{Preprocessing}
+Eine weiter Optimierungsstrategie ist das Preprocessing, also die Vorverarbeitung des Graphen. Dabei wird häufig gefordert, dass die Platzkomplexität der vorverarbeiteten Daten linear in der Größe des zu bearbeitenden Graphen ist, da man in der Realität oft mit sehr großen Graphen arbeitet \cite{Goldberg2005}. 
+
+\subsection{ALT-Algorithmen}
+Eine Familie von Algorithmen, die auf Preprocessing basieren, sind die von Goldberg und Harrleson in \cite{Goldberg2005} vorgestellten ALT-Algorithmen. ALT ist ein Akronym für A* search, \textit{Landmarks} und \textit{Triangle Inequality}\footnote{Dreiecksungleichung}. 
+
+In der Preprocessing-Phase des Algorithmus, wird eine kleine (konstante) Anzahl von Landmarken im Graphen ausgewählt, von denen aus dem kürzesten Pfad zu allen anderen Knoten bestimmt wird. Die so bestimmte Distanz wird in Kombination mit der Dreiecksungleich als Heuristik für die Bewertungsfunktion der A* Suche verwendet. Die Dreiecksungleich besagt in diesem Fall, dass die Distanz zwischen einem Knoten $n$ und einem Zielknoten $s$ in jedem Fall größer oder gleich der Differenz  der Distanz zwischen $n$ und einer Landmarke $l$ und der Distanz zwischen $s$ und der Landmarke $l$ ist.
+
+\begin{equation} \label{eq:3.2}
+	dist(n,s) \ge dist(l,n)-dist(l,s)
+\end{equation}
+
+
+Somit stellt diese Differenz eine untere Schranke für die Distanz zwischen n und s dar und kann somit als Heuristik verwendet werden \cite{Goldberg2005}.
+
+\subsection{Reach-Based Pruning}
+Reach-Based Pruning \footnote{englischer Ausdruck für das Beschneiden von Bäumen. In der Informatik wird \textit{Pruning} oft als Ausdruck für das Vereinfachen von Graphen verwendet \cite{Wikipedia:00}.} ist eine von Gutman in \cite{Gutman2004} vorgestellte Preprocessing-Strategie zur Vereinfachung von Graphen. Der \textit{Reach} $r$ ist hierbei eine Metrik für einen Graphen $G$, die als Modifikation für den Dijkstra Algorithmus verwendet werden kann. 
+
+Sei $P$ ein Pfad in $G$ von einem Startknoten $s$ zu einem Zielknoten $t$ und $v$ ein Knoten auf diesem Pfad $P$. Sei zudem $dist(v,w,P)$ die Distanz zwischen den Knoten $v$ und $w$ auf dem Pfad $P$. Dann ist
+
+\begin{equation} \label{eq:3.3}
+	r(v,P) = \min{(dist(s,v,P), dist(v,t,P))}
+\end{equation}
+
+der \textit{Reach} von $v$ auf $P$. Zudem ist der \textit{Reach} von $v$ in $G$, $r(v,G)$ definiert als das Maximum aller $r(v,Q)$ für alle kürzesten Pfade $Q$ in $G$. 
+
+Gutman konnte beweisen, dass ein Knoten $v$ nur dann vom Dijkstra Algorithmus betrachtet werden muss, wenn 
+\begin{equation} \label{eq:3.4}
+	r(v,G) \ge \underline{dist(s,v)} \: \: \: \vee \: \: \: r(v,G) \ge \underline{dist(v,t)}
+\end{equation}
+
+gilt, wobei $\underline{dist(v,w)}$ eine untere Schranke für die Distanz zwischen zwei Knoten $v$ und $w$ darstellt. 
+
+Die einfachste Möglichkeit die \textit{Reaches} aller Knoten zu bestimmen, ist alle kürzesten Pfade eines Graphen zu bestimmen und die Bedingung \ref{eq:3.4}  anzuwenden. Effizientere Vorgehen wurden in \cite{Goldberg2007} und \cite{Gutman2004} beschrieben.
+
+\newpage
+\section{Experimentelle Analyse}
+Um die Auswirkung der hier vorgestellten Optimierungsstrategien zu veranschaulichen, wurde von Goldberg in \cite{Goldberg2007} die Laufzeit der folgenden Algorithmen verglichen:
+\begin{itemize}
+	\item \textit{\textbf{B}}: Bidirektionaler Dijkstra Algorithmus 
+	\item \textit{\textbf{ALT}}: Algorithmus aus der ALT-Familie 
+	\item \textit{\textbf{RE}}: Implementierung der Reach-Based Pruning Strategie 
+	\item \textit{\textbf{REAL}}: Algorithmus mit zwei Preprocessing-Stufen (ALT und RE)
+\end{itemize}
+Als Input wurde das Straßennetz der San Francisco Bay Area verwendet und jeder dieser Algorithmen wurde auf 10.000 zufällig gewählten Paaren von Knoten angewendet. Dabei wurden die in Tabelle \ref{tab:Experimentelle Analyse} dargstellten Messwerte\footnote{Die Laufzeitmessungen wurden auf einem Toshiba Tecra 5 Laptop mit 2GB RAM und Dual-Core 2 GHz Processor durchgeführt} bestimmt.
+
+\begin{table}[h] % Beginn: Tabellen-Umgebung
+	\centering % zentriert die Tabelle
+	\def\arraystretch{1.5}
+	\begin{tabular}{|c| c| c|}
+		\hline % horizontale Linie
+		\: \: \textbf{Algorithmus} \: \: & \: \: \textbf{Laufzeit Preprocessing} \: \: & \: \: \textbf{Query Laufzeit} \: \: \\
+		\hline % horizontale Linie
+		\textit{B} & - & $30,49$\,ms  \\
+		%\hline % horizontale Linie
+		\textit{ALT} & $5,7$\,s & $2,91$\,ms  \\
+		%\hline % horizontale Linie
+		\textit{RE} & $45,4$\,s & $0,55$\,ms  \\
+		%\hline % horizontale Linie
+		\textit{REAL} & $51,1$\,s & $0,28$\,ms  \\
+		\hline % horizontale Linie
+	\end{tabular}
+	\caption{Messung der durchschnittlichen Laufzeit der Preprocessing- und Query-Phase der Algorithmen \textit{B}, \textit{ALT}, \textit{RE} und \textit{REAL} auf dem Straßennetz der San Francisco Bay Area} % Tabellenunterschrift 
+	\label{tab:Experimentelle Analyse} % ermöglicht Verweise
+\end{table} % Ende: Tabellen-Umgebung
+
+Man kann erkennen, dass die Laufzeit der Algorithmen mit Preprocessing-Phase (\textit{ALT}, \textit{RE}, \textit{REAL}) signifikant besser ist, als die der Algorithmen ohne Preprocessing-Phase (\textit{B}). Es ist jedoch zu beachten, dass die Laufzeit der Preprocessing-Phase um einige Größenordnungen höher ist, als die Laufzeit des eigentlichen Query-Algorithmus.
+
 
 

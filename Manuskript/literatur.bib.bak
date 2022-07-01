@@ -373,4 +373,35 @@ Wirtschaftsuniversität Wien
   volume  = {8},
 }
 
+@Article{Peralta2020,
+  author    = {Federico Peralta and Mario Arzamendia and Derlis Gregor and Daniel G. Reina and Sergio Toral},
+  journal   = {Sensors},
+  title     = {{A Comparison of Local Path Planning Techniques of Autonomous Surface Vehicles for Monitoring Applications: The Ypacarai Lake Case-study}},
+  year      = {2020},
+  month     = {mar},
+  number    = {5},
+  pages     = {1488},
+  volume    = {20},
+  doi       = {10.3390/s20051488},
+  publisher = {{MDPI} {AG}},
+}
+
+@Article{Goldberg2005,
+  author  = {Andrew V. Goldberg and Chris Harrelson},
+  journal = {SODA '05: Proceedings of the sixteenth annual ACM-SIAM symposium on Discrete algorithms},
+  title   = {{Computing the shortest path: A search meets graph theory}},
+  year    = {2005},
+  month   = jan,
+  pages   = {156--165},
+}
+
+@Conference{Gutman2004,
+  author    = {Ron Gutman},
+  booktitle = {{Proceedings of the Sixth Workshop on Algorithm Engineering and Experiments and the First Workshop on Analytic Algorithmics and Combinatorics}},
+  title     = {{Reach-Based Routing: A New Approach to Shortest Path Algorithms Optimized for Road Networks}},
+  year      = {2004},
+  address   = {New Orleans, LA, USA},
+  month     = jan,
+}
+
 @Comment{jabref-meta: databaseType:bibtex;}

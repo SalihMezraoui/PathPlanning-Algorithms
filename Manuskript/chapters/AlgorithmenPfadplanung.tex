@@ -1,8 +1,27 @@
 \chapter{Algorithmen zur Pfadplanung}
+\section{Was ist Pfadplanung?}
+Die Pfadplanung ist ein nichtdeterministisches, polynomialzeitliches ("NP") schweres Problem mit der Aufgabe, 
+einen kontinuierlichen Pfad zu finden, der ein System von einer Ausgangs- zu einer Endkonfiguration verbindet. 
+Die Komplexität des Problems steigt mit zunehmender Anzahl der Freiheitsgrade des Systems. Der zu verfolgende 
+Pfad (der optimale Pfad) wird auf der Grundlage von Einschränkungen und Bedingungen bestimmt, z. B. im Bereich
+mobiler Roboter unter Berücksichtigung des kürzesten Weges zwischen den Endpunkten oder der minimalen Fahrzeit
+ohne Kollisionen. Manchmal werden Einschränkungen und Ziele gemischt, z. B. um den Energieverbrauch zu minimieren,
+ohne dass die Fahrzeit einen bestimmten Schwellenwert überschreitet [1].
 
-In diesem Kapitel wird beschrieben, warum es unterschiedliche Konsistenzmodelle\index{Konsistenzmodelle} gibt. Außerdem werden die Unterschiede zwischen strengen Konsistenzmodellen\index{Linearisierbarkeit} (Linearisierbarkeit, sequentielle Konsistenz)\index{sequentiell!Konsistenz} und schwachen Konsistenzmodellen\index{Konsistenz!schwach} (schwache Konsistenz, Freigabekonsistenz)\index{Freigabekonsistenz} erläutert. Es wird geklärt, was Strenge und Kosten (billig, teuer) in Zusammenhang mit Konsistenzmodellen bedeuten.
-
-\section{Warum existieren unterschiedliche Konsistenzmodelle?}
-
-
-Nach \cite{Mosberger:93} kann die Performanzsteigerung der schwächeren Konsistenzmodelle wegen der Optimierung\index{Optimierung} (Pufferung, Code-Scheduling, Pipelines) 10-40 Prozent betragen. Wenn man bedenkt, dass mit der Nutzung der vorhandenen Synchronisierungsmechanismen schwächere Konsistenzmodelle den Anforderungen der strengen Konsistenz genügen, stellt sich der höhere programmiertechnischer Aufwand bei der Implementierung der schwächeren Konsistenzmodelle als ihr einziges Manko dar.
+\section{Uninformierter Ansatz}
+\label{Uninformierter Ansatz}
+\textbf{Breitensuche:}\linebreak
+Die Breitensuche gehört zu den uninformierten Suchalgorithmen, diese werden auch „blind“ genannt, weil bei ihrer 
+Suche auf keine zusätzlichen Informationen (wie z.B. Wichtungen) zurückgegriffen wird.
+Bei der Breitensuche wird zunächst vom Wurzelknoten aus betrachtet alle verbunden Knoten ersten Grades besucht
+ und dies Ebene für Ebene im Baum wiederholt bis alle Knoten besucht wurden. 
+Die Breitensuche findet weitestgehend in der Graphentheorie seine Anwendung.\cite{Russell:10b}
+\linebreak\linebreak
+\textbf{Tiefensuche:}\linebreak
+Die Tiefensuche gehört ebenfalls zu den uninformierten Suchalgorithmen.
+Im Gegensatz zu der Breitensuche werden nicht die Ebenen nacheinander abgesucht sondern je Nachfolger angefangen 
+beim Wurzelknoten werden bis sie keine weiteren Nachfolger mehr haben besucht. Erst dann wird der nächste Nachbar 
+in der ersten Ebene besucht bis keine unbesuchten Knoten mehr vorhanden sind.Die Tiefensuche ist indirekt an vielen 
+komplexeren Algorithmen beteiligt. Unter anderem kann die Tiefensuche auch für das Ermitteln von Zusammenhangskomponenten
+oder für das Erzeugen eines Irrgartens verwendet werden.
+\cite{Russell:10c}

@@ -7,20 +7,20 @@
 DAVID: 
 1. Einleitung und Problemstellung 
 2. Algorithmen zur Pfadplanung
-    - SALAH: Was ist Pfadplanung?
-    - Uninformierter Ansatz
-    - SALAH: Dijkstra's Algorithm
-	- SALAH: Bellman-Ford 
+  - SALAH: Was ist Pfadplanung?
+  - Uninformierter Ansatz
+  - SALAH: Dijkstra's Algorithm
+  - SALAH: Bellman-Ford 
 
 MARIUS:  
 3. Möglichkeiten zur Optimierung 
 
 SALAH:  
 4. Anwendungen
-	- GIS(Geoinformationssystem)
-	- Mobile Roboter mit verbessertem Dijkstra-Algorithmus
-	- DAVID: Autonome Navigation
+  - GIS(Geoinformationssystem)
+  - Mobile Roboter mit verbessertem Dijkstra-Algorithmus
+  - DAVID: Autonome Navigation
 
 DAVID: 
-1. Zusammenfassung und Ausblick
+5. Zusammenfassung und Ausblick
 

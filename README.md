@@ -21,6 +21,6 @@ SALAH:
   - Mobile Roboter mit verbessertem Dijkstra-Algorithmus
   - DAVID: Autonome Navigation
 
-DAVID: 
+DAVID:  
 5. Zusammenfassung und Ausblick
 

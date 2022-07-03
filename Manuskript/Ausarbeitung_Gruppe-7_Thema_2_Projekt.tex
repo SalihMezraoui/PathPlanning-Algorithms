@@ -71,6 +71,9 @@
 \pagestyle{myheadings} 			% Erzeugt selbstdefinierte Kopfzeile
 \makeindex 						% Index-Erstellung
 
+% Margin zwischen Tabelle und Tabellenunterschrift
+\usepackage{caption} 
+\captionsetup[table]{skip=10pt, labelfont+=bf}
 
 %--------------------------------------------------------------------------
 \begin{document}
@@ -114,10 +117,10 @@
 \bibliographystyle{geralpha}			% Literaturverzeichnis
 \bibliography{literatur}     			% BibTeX-File literatur.bib
 %--------------------------------------------------------------------------
-\printindex 							% Index (optional)
+% \printindex 							% Index (optional)
 %--------------------------------------------------------------------------
 \begin{appendix}						% Anhänge sind i.d.R. optional
-   \include{chapters/Glossar}			% Glossar   
+   %\include{chapters/Glossar}			% Glossar   
    \include{chapters/Arbeitsverteilung}		% Welcher Studierende hat welche Texte formuliert?
    
 \end{appendix}

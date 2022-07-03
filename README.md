@@ -6,20 +6,20 @@
 
 DAVID: 
 1. Einleitung und Problemstellung 
-2. Primitive Algorithmen zur Pfadplanung - Allgemeines 
-    - dfs/bfs
-
-
-SALAH:  
-3. Verbesserte Algorithmen zur Pfadplanung
-	- Dijkstra's Algorithm
-	- Bellman-Ford 
-	- Anwendungen
-
+2. Algorithmen zur Pfadplanung
+    - SALAH: Was ist Pfadplanung?
+    - Uninformierter Ansatz
+    - SALAH: Dijkstra's Algorithm
+	- SALAH: Bellman-Ford 
 
 MARIUS:  
-4. Möglichkeiten zur Optimierung 
+3. Möglichkeiten zur Optimierung 
 
+SALAH:  
+4. Anwendungen
+	- GIS(Geoinformationssystem)
+	- Mobile Roboter mit verbessertem Dijkstra-Algorithmus
+	- DAVID: Autonome Navigation
 
 DAVID: 
 5. Zusammenfassung und Ausblick

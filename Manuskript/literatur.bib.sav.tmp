@@ -114,10 +114,10 @@
 }
 
 @InBook{Russell:10a,
-  author    = {Russell, Stuart J. and Norvig, Peter and Russell, Stuart and Russell},
+  author    = {Russell, Stuart J. and Norvig, Peter},
   chapter   = {3},
   pages     = {64},
-  publisher = {Prentice Hall},
+  publisher = {Pearson Education, Inc},
   title     = {{Artificial Intelligence: A Modern Approach}},
   year      = {2010},
   edition   = {Third},
@@ -125,10 +125,10 @@
 }
 
 @InBook{Russell:10b,
-  author    = {Russell, Stuart J. and Norvig, Peter and Russell, Stuart and Russell},
+  author    = {Russell, Stuart J. and Norvig, Peter},
   chapter   = {3.4.1},
   pages     = {81},
-  publisher = {Prentice Hall},
+  publisher = {Pearson Education, Inc},
   title     = {{Artificial Intelligence: A Modern Approach}},
   year      = {2010},
   edition   = {Third},
@@ -136,21 +136,21 @@
 }
 
 @InBook{Russell:10c,
-  author    = {Russell, Stuart J. and Norvig, Peter and Russell, Stuart and Russell},
+  author    = {Russell, Stuart J. and Norvig, Peter},
   chapter   = {3.4.3},
   pages     = {85,86},
-  publisher = {Prentice Hall},
+  publisher = {Pearson Education, Inc},
   title     = {{Artificial Intelligence: A Modern Approach}},
   year      = {2010},
   edition   = {Third},
   isbn      = {0136042597},
 }
 
-@InBook{Russel:10d,
-  author    = {Russell, Stuart J. and Norvig, Peter and Russell, Stuart and Russell},
+@InBook{Russell:10d,
+  author    = {Russell, Stuart J. and Norvig, Peter},
   chapter   = {3.7},
   pages     = {108,109},
-  publisher = {Prentice Hall},
+  publisher = {Pearson Education, Inc},
   title     = {{Artificial Intelligence: A Modern Approach}},
   year      = {2010},
   edition   = {Third},
@@ -178,7 +178,7 @@
 @Article{Karur2021,
   author     = {Karur, Karthik and Sharma, Nitin and Dharmatti, Chinmay and Siegel, Joshua E.},
   journal    = {Vehicles},
-  title      = {A Survey of Path Planning Algorithms for Mobile Robots},
+  title      = {{A Survey of Path Planning Algorithms for Mobile Robots}},
   year       = {2021},
   issn       = {2624-8921},
   number     = {3},
@@ -191,7 +191,7 @@
 @Article{Javaid2019,
   author  = {Adeel Javaid},
   journal = {SSRN Electronic Journal},
-  title   = {Research on Optimal Path based on Dijkstra Algorithms},
+  title   = {{Research on Optimal Path based on Dijkstra Algorithms}},
   year    = {2019},
   volume  = {3},
 }
@@ -199,7 +199,7 @@
 @Article{Zhou2013,
   author     = {Zhou, Minhang and Gao, Nina},
   journal    = {Proceedings of the 3rd International Conference on Mechatronics Engineering and Information Technology},
-  title      = {Understanding Dijkstra Algorithm},
+  title      = {{|Understanding Dijkstra Algorithm}},
   year       = {2013},
   month      = {01},
   volume     = {3},
@@ -210,7 +210,7 @@
 @Article{Abusalim2020,
   author     = {Abusalim, Samah and Ibrahim, Rosziati and Saringat, Mohd and Jamel, Sapiee and Wahab, Jahari},
   journal    = {IOP Conference Series: Materials Science and Engineering},
-  title      = {Comparative Analysis between Dijkstra and Bellman-Ford Algorithms in Shortest Path Optimization},
+  title      = {{Comparative Analysis between Dijkstra and Bellman-Ford Algorithms in Shortest Path Optimization}},
   year       = {2020},
   month      = {09},
   pages      = {012077},
@@ -222,7 +222,7 @@
 @Article{Mukhlif2020,
   author  = {Mukhlif, Fadhil and Saif, Abdu},
   journal = {International Conference on Communication, Electrical and Computer Networks},
-  title   = {Comparative Study On Bellman-Ford And Dijkstra Algorithms},
+  title   = {{Comparative Study On Bellman-Ford And Dijkstra Algorithms}},
   year    = {2020},
   month   = {02},
 }
@@ -230,7 +230,7 @@
 @Article{Huang2012,
   author     = {Huang, Haosheng and Gartner, Georg},
   journal    = {Journal of Location Based Services},
-  title      = {Collective intelligence-based route recommendation for assisting pedestrian wayfinding in the era of Web 2.0},
+  title      = {{Collective intelligence-based route recommendation for assisting pedestrian wayfinding in the era of Web 2.0}},
   year       = {2012},
   month      = {03},
   pages      = {1-21},
@@ -242,10 +242,11 @@
 @Article{Vaibhavi2014,
   author  = {Vaibhavi, Patel and Prof.ChitraBaggar},
   journal = {International Journal of P2P Network Trends and Technology (IJPTT)},
-  title   = {A survey paper of Bellman-ford algorithm and Dijkstra algorithm for finding shortest path in GIS application},
+  title   = {{A survey paper of Bellman-ford algorithm and Dijkstra algorithm for finding shortest path in GIS application}},
   year    = {2014},
 }
 
 @Article{HamidAli2020,
   author  = {Hamid Ali, Abed Alasadi and Mohammed Talib, Azizand and Mohammed, Dhiya and Ahmed, Abdulmaje},
-  journal = {Journal of Network Computing 
+  journal = {Journal of Network Computing and Applications (2020) 5: 10-22 Clausius Scientific Press, Canada},
+  title

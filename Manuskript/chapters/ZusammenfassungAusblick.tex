@@ -1,1 +1,34 @@
 \chapter{Zusammenfassung und Ausblick}
+\label{Zusammenfassung und Ausblick}
+In den letzten Jahren hat die Pfadplanung\index{Pfadplanung} immer mehr an Relevanz gewonnen, zum Beispiel im Bereich des autonomen Autofahrens wird immer mehr Forschung 
+im Bereich der Pfadplanungsalgorithmen\index{Pfadplanungsalgorithmen} betrieben. \cite{Karur:21}
+
+In diesem Paper haben wir aufeinander aufbauend Algorithmen\index{Algorithmen} vorgestellt, die in einem Programm mit bestimmten Eingaben und Umgebungen 
+wie z.B Graphen verwendet werden können um von einem gegeben Start ein oder mehrere Ziele zu finden und dabei durch verschiedene Bewertungskriterien\index{Bewertungskriterien} den besten Weg zu finden.
+Mit diesen Algorithmen kann ein Programm durch eine Sequenz von Aktionen sein Ziel erreichen. Diesen Prozess nennt man Suche.
+\cite{Russell:10c}
+\begin{itemize}
+    \item Bevor das Programm mit der Suche nach der besten Lösung beginnen kann, muss erst ein Ziel identifiziert und das Problem genau definiert werden.
+    \item Suchalgorithmen behandeln Zustände und Aktionen atomar: Sie berücksichtigen keine interne Struktur, die sie besitzen könnten.
+    \item Ein allgemeiner uninformierter\index{uninformiert} TREE-SEARCH-Algorithmus berücksichtigt alle möglichen Wege, um eine Lösung zu finden, während ein informierter GRAPH-SEARCH-Algorithmus redundante Wege vermeidet.
+    \item Uninformierte Pfadsuchalgorithmen haben nur Zugriff auf die Problemdefinition. Die grundlegenden Algorithmen sind wie folgt:
+    \begin{itemize}
+        \item Die Breadth-first-Suche expandiert zuerst die flachsten Knoten; sie ist vollständig, optimal für einheitliche Pfadkosten, hat aber eine exponentielle Raumkomplexität.
+        \item Die Tiefensuche\index{Tiefensuche} expandiert zuerst den tiefsten nicht expandierten Knoten. Sie ist weder vollständig noch optimal, hat aber eine lineare Raumkomplexität.
+        \item Die iterative Vertiefungssuche ist eine Wiederholung der Tiefensuche mit zunehmender Tiefenbegrenzung, bis ein Ziel gefunden wird. Sie ist vollständig, optimal für die Kosten pro Schritt, hat eine vergleichbare Zeitkomplexität\index{Zeitkomplexität} wie die Breitensuche\index{Breitensuche} und eine lineare Raumkomplexität\index{Raumkomplexität}.
+        \item Der Greedy Dijkstra-Algorithmus\index{Dijkstra} der zwar bei der blinden Suche Zeit vergeudet aber dafür optimal ist und eine Trefferquote von 100\% hat.
+        \item Die Optimierung\index{Optimierung} durch eine bidirektionale Suche\index{bidirektionale Suche} kann die Zeitkomplexität enorm reduzieren, ist aber nicht immer anwendbar und kann zu viel Speicherplatz beanspruchen.
+    \end{itemize}
+    \item Informierte\index{informiert} Suchmethoden können auf heuristische Funktionen zurückgreifen, die die Kosten einer Lösung schätzen
+    \begin{itemize}
+        \item Der generische Best-First-Suchalgorithmus\index{Best-First} wählt einen Knoten für die Expansion gemäß einer Bewertungsfunktion aus.
+        \item Der Greedy best-first search expandiert Knoten mit minimalem heuristischem\index{Heuristik} Funktionswert. Er ist nicht optimal, aber oft effizient.
+        \item A*-Suche\index{A*} expandiert Knoten mit minimalem Heuristischen Funktions- und Pfadkostenwerten.\index{Pfadkosten} A* ist vollständig und optimal, vorausgesetzt die heuristische Funktion ist zulässig.
+        \item ALT-Algorithmen\index{ALT}, die aufgebaut auf A* durch Preprocessing noch optimiertere Ergebnisse erzeugt.
+        \item Reach-based Pruning\index{Reach based Pruning}, welches den Dijkstra-Algorithmus um eine Metrik erweitert und dadurch optimiert.
+    \end{itemize}
+\end{itemize}
+\cite{Russell:10c}
+
+Alle diese Algorithmen haben diverse Vor- und Nachteile und daraus ergeben sich verschiedene 
+Anwendungsbereiche\index{Anwendungsbereiche} auf welche wir in Kapitel \ref*{Anwendungen} gesondert eingegangen sind.

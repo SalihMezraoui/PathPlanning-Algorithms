@@ -1,1 +1,5 @@
 .DS_Store
+*.bib.bak
+*.bib.bak
+*.bib.sav.tmp
+*.aux

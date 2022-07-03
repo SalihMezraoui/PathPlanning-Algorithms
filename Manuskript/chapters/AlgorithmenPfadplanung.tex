@@ -1,1 +1,28 @@
-\chapter{Algorithmen zur Pfadplanung}
+\chapter{Algorithmen zur Pfadplanung}\index{Algorithmen}\index{Pfadplanung}\index{Algoithmus}
+\section{Was ist Pfadplanung?}
+Die Pfadplanung ist ein nichtdeterministisches, polynomialzeitliches ("NP") schweres Problem mit der Aufgabe, 
+einen kontinuierlichen Pfad zu finden, der ein System von einer Ausgangs- zu einer Endkonfiguration verbindet. 
+Die Komplexität des Problems steigt mit zunehmender Anzahl der Freiheitsgrade des Systems. Der zu verfolgende 
+Pfad (der optimale Pfad) wird auf der Grundlage von Einschränkungen und Bedingungen bestimmt, z. B. im Bereich
+mobiler Roboter unter Berücksichtigung des kürzesten Weges zwischen den Endpunkten oder der minimalen Fahrzeit
+ohne Kollisionen. Manchmal werden Einschränkungen und Ziele gemischt, z. B. um den Energieverbrauch zu minimieren,
+ohne dass die Fahrzeit einen bestimmten Schwellenwert überschreitet [1].
+
+\section{Uninformierter Ansatz}\index{uninformiert}
+\label{Uninformierter Ansatz}
+\textbf{Breitensuche:}\index{Breitensuche}\\
+Die Breitensuche gehört zu den uninformierten Suchalgorithmen, diese werden auch „blind“ genannt, weil bei ihrer 
+Suche auf keine zusätzlichen Informationen (wie z.B. Wichtungen) zurückgegriffen wird.
+Bei der Breitensuche wird zunächst vom Wurzelknoten aus betrachtet alle verbunden Knoten ersten Grades besucht
+und dies Ebene für Ebene im Baum\index{Baum} wiederholt bis alle Knoten\index{Knoten} besucht wurden. 
+Die Breitensuche findet weitestgehend in der Graphentheorie seine Anwendung.\cite{Russell:10b}
+\\
+\\
+\textbf{Tiefensuche:}\index{Tiefensuche}\\
+Die Tiefensuche gehört ebenfalls zu den uninformierten Suchalgorithmen.
+Im Gegensatz zu der Breitensuche werden nicht die Ebenen nacheinander abgesucht sondern je Nachfolger angefangen 
+beim Wurzelknoten werden bis sie keine weiteren Nachfolger mehr haben besucht. Erst dann wird der nächste Nachbar 
+in der ersten Ebene besucht bis keine unbesuchten Knoten mehr vorhanden sind.Die Tiefensuche ist indirekt an vielen 
+komplexeren Algorithmen beteiligt. Unter anderem kann die Tiefensuche auch für das Ermitteln von Zusammenhangskomponenten
+oder für das Erzeugen eines Irrgartens verwendet werden.
+\cite{Russell:10c}

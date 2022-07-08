@@ -1,7 +1,7 @@
 \chapter{Optimierungsstrategien}
 \label{Optimierungsstrategien}
 
-In diesem Kapitel wird beschrieben, wie bisher vorgestellten Algorithmen zur Pfadplanung optimiert werden können.
+Die Anforderungen an die Laufzeit von Algorithmen zur Pfadplanung steigt auf Grund der immer komplexer werdenden Systemen stetig weiter an. In diesem Kapitel wird beschrieben, wie die bisher vorgestellten Algorithmen zur Pfadplanung für bestimmte Anwendungsgebiete optimiert werden können.
 
 \section{Bidirektionale Suche}
 
@@ -12,7 +12,7 @@ Bei der bidirektionalen Suche wird ein Suchalgorithmus simultan aus zwei Richtun
 \section{Informed Search}
 Ein Ansatz, um effizienter Lösungen für das Shortest Path Problem zu finden, ist die Informed Search Strategie, bei der problemspezifisches Wissen, das über die Definition des Problems hinausgeht, bei der Lösungsfindung berücksichtigt wird. Der nächste zu expandierende Knoten auf dem Pfad zum Zielknoten wird auf Basis einer Bewertungsfunktion $f(n)$ ausgewählt. Eine Komponente dieser Bewertungsfunktion ist eine heuristische Funktion $h(n)$, die die zu erwartenden Kosten des optimalen Pfades vom Knoten n zum Zielknoten berechnet \cite{Russel2010}. Im Falle des Straßennetzes könnte hierzu die Länge der Luftlinie zwischen dem Knoten n und dem Zielknoten verwendet werden \cite{Hart1968}.
 
-Die einfachste Umsetzung dieser Strategie ist, nur die heuristische Funktion bei der Bewertung von Knoten heranzuziehen, sodass $f(n)=h(n)$ gilt. Dieses Vorgehen wird auch Greedy Best-First Suche genannt, da in jedem Schritt versucht wird, so nahe wie möglich an den Zielknoten zu gelangen \cite{Russel2010}. Auf diese Weise werden die Suchkosten, also die Anzahl der expandierten Knoten zwar minimiert, es kann jedoch nicht garantiert werden, dass die gefundene Lösung optimal ist \cite{Heusner2017}.
+Die einfachste Umsetzung dieser Strategie ist, nur die heuristische Funktion bei der Bewertung von Knoten heranzuziehen, sodass $f(n)=h(n)$ gilt. Dieses Vorgehen wird auch Greedy Best-First Suche genannt, da in jedem Schritt versucht wird, so nahe wie möglich an den Zielknoten zu gelangen \cite{Russel2010}. Auf diese Weise werden die Suchkosten, also die Anzahl der expandierten Knoten zwar minimiert, es kann jedoch nicht garantiert werden, dass die gefundene Lösung optimal ist \cite{Russel2010}.
 
 Eine elaboriertere Umsetzung der Informed Search Strategie ist der A* Algorithmus zur Berechnung des kürzesten Pfades zwischen zwei Knoten \cite{Russel2010}. A* basiert auf Dijkstra’s Algorithmus und erweitert diesen um eine heuristische Funktion, um die Laufzeit zu reduzieren \cite{Peralta2020}. Die Bewertungsfunktion $f(n)$ für den A*-Algorithmus setzt sich zusammen aus den Kosten des optimalen Pfades vom Startknoten bis zum Knoten n, $g(n)$ und einer heuristischen Funktion $h(n)$, sodass gilt:
 \begin{equation} \label{eq:3.1}
@@ -69,7 +69,7 @@ Um die Auswirkung der hier vorgestellten Optimierungsstrategien zu veranschaulic
 	\item \textit{\textbf{RE}}: Implementierung der Reach-Based Pruning Strategie 
 	\item \textit{\textbf{REAL}}: Algorithmus mit zwei Preprocessing-Stufen (ALT und RE)
 \end{itemize}
-Als Input wurde das Straßennetz der San Francisco Bay Area verwendet und jeder dieser Algorithmen wurde auf 10.000 zufällig gewählten Paaren von Knoten angewendet. Dabei wurden die in Tabelle \ref{tab:Experimentelle Analyse} dargstellten Messwerte\footnote{Die Laufzeitmessungen wurden auf einem Toshiba Tecra 5 Laptop mit 2GB RAM und Dual-Core 2 GHz Processor durchgeführt} bestimmt.
+Als Input wurde das Straßennetz der San Francisco Bay Area mit $330 024$ Knoten und $793 681$ Kanten verwendet und jeder dieser Algorithmen wurde auf 10.000 zufällig gewählten Paaren von Knoten angewendet. Dabei wurden die Laufzeit der Preprocssing-Phase und der Query-Phase der Algorithmen gemessen\footnote{Die Laufzeitmessungen wurden auf einem Toshiba Tecra 5 Laptop mit 2GB RAM und Dual-Core 2 GHz Processor durchgeführt} und in Tabelle \ref{tab:Experimentelle Analyse} dargestellt.
 
 \begin{table}[h] % Beginn: Tabellen-Umgebung
 	\centering % zentriert die Tabelle
@@ -87,7 +87,7 @@ Als Input wurde das Straßennetz der San Francisco Bay Area verwendet und jeder 
 		\textit{REAL} & $51,1$\,s & $0,28$\,ms  \\
 		\hline % horizontale Linie
 	\end{tabular}
-	\caption{Messung der durchschnittlichen Laufzeit der Preprocessing- und Query-Phase der Algorithmen \textit{B}, \textit{ALT}, \textit{RE} und \textit{REAL} auf dem Straßennetz der San Francisco Bay Area} % Tabellenunterschrift 
+	\caption{Messung der durchschnittlichen Laufzeit der Preprocessing- und Query-Phase der Algorithmen \textit{B}, \textit{ALT}, \textit{RE} und \textit{REAL} auf dem Straßennetz der San Francisco Bay Area.} % Tabellenunterschrift 
 	\label{tab:Experimentelle Analyse} % ermöglicht Verweise
 \end{table} % Ende: Tabellen-Umgebung
 

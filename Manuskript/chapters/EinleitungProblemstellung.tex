@@ -2,25 +2,22 @@
 \chapter{Einleitung und Problemstellung}
 \label{Einleitung und Problemstellung}
 
-Unter Pathfinding\index{Pathfinding} bzw. Wegfindung versteht man in der Informatik die algorithmengestütze Suche nach dem optimalen Weg(en) 
-von einem Startpunkt zu einem oder mehreren Zielpunkten.\cite{Wikipedia:00a}\\
-In diesem Paper werden wir verschiedene Pfadplanungsalgorithmen wie den Dijkstra-Algorithmus und seine Variante, 
-die häufig in Verkehrleitsystemen wie etwa Google Maps verwendet werden.
-
-Um die Geschwindigkeit des Dijkstra-Algorithmus\index{Dijkstra} bei Blindsuchen zu optimieren\index{optimieren} werden A* und seine Varianten als Stand der Technik-Algorithmen 
-für den Einsatz in statischen Umgebungen vorgestellt \cite{Karur:21}
-
-Das Thema Funktionsprinzipien und Anwendungen von Algorithmen zur Pfadplanung hat damals, wie heute einen wichtigen Stellenwert. 
-Ob im Bereich der Netzwerkroutenplanung\index{Netzwerk} oder bei KI-Spielern in Computerspielen Pfadsuchalgorithmen sind so relevant wie nie. 
-Weitere Beispiele für die Anwendung von Pfadsuchalgroithmen sind Robotik (z.B. Pakete im Logistikbereich), Planung von öffentlichen 
-Verkehrsmitteln und Routenplanung\index{Routenplanung} von Navigationssystemen\index{Navigationssystem}. 
-Viele Bereiche im Alltag verwenden im Hintergrund Pfadsuchalgorithmen\index{Pfadsuchalgorithmen} um den (kosten)günstigsten Weg zu finden, dabei ist es wichtig, 
-dass diese effizient, akkurat und schnell sein müssen, 
-damit die Hauptsysteme noch genügen Ressourcen übrig haben um gewünscht zu funktionieren. \cite{Foeada:21}
-
+Unter Pfadplanung versteht man die Berechnung des optimalen Weges zwischen einem Start- und einem oder mehreren Endpunkten in einem Netzwerk oder Graphen \cite{Esri:00}. \\
+In diesem Paper werden wir verschiedene Pfadplanungsalgorithmen wie den Dijkstra-Algorithmus und der A* Algorithmus, 
+die im Verkehrleitsystem von Google Maps verwendet werden \cite{Mehta:19}. 
+\noindent \\
+Um die Geschwindigkeit des Dijkstra-Algorithmus bei Blindsuchen zu optimieren werden A* und seine Varianten als Stand der Technik-Algorithmen 
+für den Einsatz in statischen Umgebungen vorgestellt \cite{Karur:21}.
+\noindent \\
+Das Thema \emph{Funktionsprinzipien und Anwendungen von Algorithmen zur Pfadplanung} hat, damals wie heute einen wichtigen Stellenwert. 
+Ob im Bereich der Netzwerkroutenplanung oder bei KI-Spielern in Computerspielen: Pfadsuchalgorithmen sind so relevant wie nie. 
+Weitere Beispiele für die Anwendung von Pfadsuchalgroithmen sind Planung von öffentlichen Verkehrsmitteln und 
+Robotik. Es werden zum Beispiel Pakete in Logistikzentren durch Roboter organisiert und Routen über verschiedene Logistikzentren durch Pfadsuchalgorithmen bestimmt.
+Viele Bereiche im Alltag verwenden im Hintergrund Pfadsuchalgorithmen um den (kosten)günstigsten Weg zu finden. Dabei ist es wichtig, 
+dass diese effizient, akkurat und schnell sein müssen, damit die Hauptsysteme noch genügen Ressourcen übrig haben um gewünscht zu funktionieren \cite{Foeada:21}. 
+\noindent \\
 Wir werden uns in diesem Paper die Funktionsweise der wichtigsten Pfadsuchalgorithmen, angefangen mit den uninformierten Suchalgorithmen wie der Breiten- oder Tiefensuche, 
 welche einen ersten Einblick in die Thematik geben sollen und die Rahmenbedingungen und Problemumgebungen veranschaulichen sollen; 
-Über den Bellman-Ford-Algorithmus\index{Bellman-Ford}, der intuitiv den kürzesten Weg liefert und bei dem auch negative Kantenlängen möglich sind.\cite{Mukhlif:20}
-Bis hin zu durch Heuristiken\index{Heuristik} optimierte und informierte\index{informiert} Pfadsuchalgorithmen wie Dijkstra oder A*\index{A*}, 
-die häufig in Verkehrleitsystemen wie etwa Google Maps verwendet werden, und wie sie in heutiger Zeit 
-sonst eingesetzt werden können, veranschaulichen und jeweils (Pseudo-)Code- und Anwendungsbeispiele geben.\cite{Russell:10a}
+Über den Bellman-Ford-Algorithmus, der nahezu intuitiv den kürzesten Weg liefert und bei dem auch negative Kantenlängen möglich sind\cite{Mukhlif:20}. 
+Bis hin zu durch Heuristiken optimierte und informierte Pfadsuchalgorithmen wie Dijkstra oder A*, und wie sie in heutiger Zeit 
+sonst eingesetzt werden können, veranschaulichen und jeweils (Pseudo-)Code- und Anwendungsbeispiele geben\cite{Russell:10a}.

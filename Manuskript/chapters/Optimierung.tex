@@ -21,15 +21,15 @@ Eine elaboriertere Umsetzung der Informed Search Strategie ist der A* Algorithmu
 
 Da verschiedene Heuristiken zur Konstruktion von $h(n)$ gewählt werden können, stellt A* streng genommen eine Familie von Algorithmen dar, wobei die Wahl einer Funktion $h(n)$ einen spezifischen Algorithmus der Familie selektiert \cite{Hart1968}. 
 
-Hart, Nilsson und Raphael, die in \cite{Hart1968} die A*-Suche 1968 zum ersten Mal beschrieben haben, konnten nachweisen, dass A* vollständig und optimal ist, wenn die gewählte Heuristik zulässig und konsistent ist. Das heißt, dass unter den angegebenen Voraussetzungen für die Heuristik, immer ein Pfad vom Start- zum Zielknoten gefunden wird (sofern dieser existiert) und dass dieser Pfad in jedem Fall optimal ist. Des Weiteren konnte gezeigt werden, dass A* optimal effizient ist – es kann also keinen anderen optimalen Algorithmus geben, der garantiert weniger Knoten expandiert als A* \cite{Russel2010}.
+Hart, Nilsson und Raphael, die in \cite{Hart1968} die A*-Suche 1968 zum ersten Mal beschrieben haben, konnten nachweisen, dass A* vollständig und optimal ist, wenn die gewählte Heuristik zulässig und konsistent ist. Das heißt, dass unter den angegebenen Voraussetzungen für die Heuristik immer ein Pfad vom Start- zum Zielknoten gefunden wird (sofern dieser existiert) und dass dieser Pfad in jedem Fall optimal ist. Des Weiteren konnte gezeigt werden, dass A* optimal effizient ist – es kann also keinen anderen optimalen Algorithmus geben, der garantiert weniger Knoten expandiert als A* \cite{Russel2010}.
 
 \section{Preprocessing}
-Eine weiter Optimierungsstrategie ist das Preprocessing, also die Vorverarbeitung des Graphen. Dabei wird häufig gefordert, dass die Platzkomplexität der vorverarbeiteten Daten linear in der Größe des zu bearbeitenden Graphen ist, da man in der Realität oft mit sehr großen Graphen arbeitet \cite{Goldberg2005}. 
+Eine weitere Optimierungsstrategie ist das Preprocessing, also die Vorverarbeitung des Graphen. Dabei wird gefordert, dass die Platzkomplexität der vorverarbeiteten Daten linear in der Größe des zu bearbeitenden Graphen ist, da in der Realität oft mit sehr großen Graphen gearbeitet wird. \cite{Goldberg2005}. 
 
 \subsection{ALT-Algorithmen}
 Eine Familie von Algorithmen, die auf Preprocessing basieren, sind die von Goldberg und Harrleson in \cite{Goldberg2005} vorgestellten ALT-Algorithmen. ALT ist ein Akronym für A* search, \textit{Landmarks} und \textit{Triangle Inequality}\footnote{Dreiecksungleichung}. 
 
-In der Preprocessing-Phase des Algorithmus, wird eine kleine (konstante) Anzahl von Landmarken im Graphen ausgewählt, von denen aus dem kürzesten Pfad zu allen anderen Knoten bestimmt wird. Die so bestimmte Distanz wird in Kombination mit der Dreiecksungleich als Heuristik für die Bewertungsfunktion der A* Suche verwendet. 
+In der Preprocessing-Phase des Algorithmus, wird eine kleine (konstante) Anzahl von Landmarken im Graphen ausgewählt, von denen aus dem kürzesten Pfad zu allen anderen Knoten bestimmt wird. Die so bestimmte Distanz wird in Kombination mit der Dreiecksungleichung als Heuristik für die Bewertungsfunktion der A* Suche verwendet. 
 \newpage
 Die Dreiecksungleich besagt in diesem Fall, dass die Distanz zwischen einem Knoten $n$ und einem Zielknoten $s$ in jedem Fall größer oder gleich der Differenz  der Distanz zwischen $n$ und einer Landmarke $l$ und der Distanz zwischen $s$ und der Landmarke $l$ ist.
 
@@ -38,7 +38,7 @@ Die Dreiecksungleich besagt in diesem Fall, dass die Distanz zwischen einem Knot
 \end{equation}
 
 
-Somit stellt diese Differenz eine untere Schranke für die Distanz zwischen n und s dar und kann somit als Heuristik verwendet werden \cite{Goldberg2005}.
+Diese Differenz stellt eine untere Schranke für die Distanz zwischen $n$ und $s$ dar und kann somit als Heuristik verwendet werden \cite{Goldberg2005}.
 
 \subsection{Reach-Based Pruning}
 Reach-Based Pruning \footnote{englischer Ausdruck für das Beschneiden von Bäumen. In der Informatik wird \textit{Pruning} oft als Ausdruck für das Vereinfachen von Graphen verwendet \cite{Wikipedia:00}.} ist eine von Gutman in \cite{Gutman2004} vorgestellte Preprocessing-Strategie zur Vereinfachung von Graphen. Der \textit{Reach} $r$ ist hierbei eine Metrik für einen Graphen $G$, die als Modifikation für den Dijkstra Algorithmus verwendet werden kann. 

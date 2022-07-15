@@ -10,10 +10,11 @@ Bei der bidirektionalen Suche wird ein Suchalgorithmus simultan aus zwei Richtun
 %Eine Implementierung der Bidirektionalen Suche ist der Bidirektionale Dijkstra Algorithmus von Vaira und Kurasova. [7] Hier wird der in Abschnitt \ref{Algorithmen zur Pfadplanung} vorgestellte Dijkstra Algorithmus so modifiziert, dass eine bidirektionale Suche von zwei Prozessen auf einem Mehrkernprozessor parallelisiert durchgeführt wird. In mehreren experimentellen Analysen konnte gezeigt werden, dass die Laufzeit des parallelen bidirektionalen Dijkstra Algorithmus bis zu drei Mal kleiner ist als die des Standard Dijkstra Algorithmus.%
 
 \section{Informed Search}
+
 Ein Ansatz, um effizienter Lösungen für das Shortest Path Problem zu finden, ist die Informed Search Strategie, bei der problemspezifisches Wissen, das über die Definition des Problems hinausgeht, bei der Lösungsfindung berücksichtigt wird. Der nächste zu expandierende Knoten auf dem Pfad zum Zielknoten wird auf Basis einer Bewertungsfunktion $f(n)$ ausgewählt. Eine Komponente dieser Bewertungsfunktion ist eine heuristische Funktion $h(n)$, die die zu erwartenden Kosten des optimalen Pfades vom Knoten $n$ zum Zielknoten berechnet \cite{Russel2010}. Im Falle des Straßennetzes könnte hierzu die Länge der Luftlinie zwischen dem Knoten $n$ und dem Zielknoten verwendet werden \cite{Hart1968}.
 
 Die einfachste Umsetzung dieser Strategie ist, nur die heuristische Funktion bei der Bewertung von Knoten heranzuziehen, sodass $f(n)=h(n)$ gilt. Dieses Vorgehen wird auch Greedy Best-First Suche genannt, da in jedem Schritt versucht wird, so nahe wie möglich an den Zielknoten zu gelangen \cite{Russel2010}. Auf diese Weise werden die Suchkosten, also die Anzahl der expandierten Knoten zwar minimiert, es kann jedoch nicht garantiert werden, dass die gefundene Lösung optimal ist \cite{Russel2010}.
-
+\label{A*}
 Eine elaboriertere Umsetzung der Informed Search Strategie ist der A* Algorithmus zur Berechnung des kürzesten Pfades zwischen zwei Knoten \cite{Russel2010}. A* basiert auf Dijkstra’s Algorithmus und erweitert diesen um eine heuristische Funktion, um die Laufzeit zu reduzieren \cite{Peralta2020}. Die Bewertungsfunktion $f(n)$ für den A*-Algorithmus setzt sich zusammen aus den Kosten des optimalen Pfades vom Startknoten bis zum Knoten $n$, $g(n)$ und einer heuristischen Funktion $h(n)$, sodass gilt:
 \begin{equation} \label{eq:3.1}
 	f(n)=g(n)+h(n)
@@ -27,6 +28,7 @@ Hart, Nilsson und Raphael, die in \cite{Hart1968} die A*-Suche 1968 zum ersten M
 Eine weitere Optimierungsstrategie ist das Preprocessing, also die Vorverarbeitung des Graphen. Dabei wird gefordert, dass die Platzkomplexität der vorverarbeiteten Daten linear in der Größe des zu bearbeitenden Graphen ist, da in der Realität oft mit sehr großen Graphen gearbeitet wird. \cite{Goldberg2005}. 
 
 \subsection{ALT-Algorithmen}
+\label{ALT-Algorithmen}
 Eine Familie von Algorithmen, die auf Preprocessing basieren, sind die von Goldberg und Harrleson in \cite{Goldberg2005} vorgestellten ALT-Algorithmen. ALT ist ein Akronym für A* search, \textit{Landmarks} und \textit{Triangle Inequality}\footnote{Dreiecksungleichung}. 
 
 In der Preprocessing-Phase des Algorithmus, wird eine kleine (konstante) Anzahl von Landmarken im Graphen ausgewählt, von denen aus dem kürzesten Pfad zu allen anderen Knoten bestimmt wird. Die so bestimmte Distanz wird in Kombination mit der Dreiecksungleichung als Heuristik für die Bewertungsfunktion der A* Suche verwendet. 
@@ -41,6 +43,7 @@ Die Dreiecksungleich besagt in diesem Fall, dass die Distanz zwischen einem Knot
 Diese Differenz stellt eine untere Schranke für die Distanz zwischen $n$ und $s$ dar und kann somit als Heuristik verwendet werden \cite{Goldberg2005}.
 
 \subsection{Reach-Based Pruning}
+\label{Reach-Based Pruning}
 Reach-Based Pruning \footnote{englischer Ausdruck für das Beschneiden von Bäumen. In der Informatik wird \textit{Pruning} oft als Ausdruck für das Vereinfachen von Graphen verwendet \cite{Wikipedia:00}.} ist eine von Gutman in \cite{Gutman2004} vorgestellte Preprocessing-Strategie zur Vereinfachung von Graphen. Der \textit{Reach} $r$ ist hierbei eine Metrik für einen Graphen $G$, die als Modifikation für den Dijkstra Algorithmus verwendet werden kann. 
 
 Sei $P$ ein Pfad in $G$ von einem Startknoten $s$ zu einem Zielknoten $t$ und $v$ ein Knoten auf diesem Pfad $P$. Sei zudem $dist(v,w,P)$ die Distanz zwischen den Knoten $v$ und $w$ auf dem Pfad $P$. Dann ist

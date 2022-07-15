@@ -8,27 +8,28 @@ Karthik Karur, Nitin Sharma, Chinmay Dharmatti, und Joshua E. Siegel haben Pfadp
 \newline
 Die Komplexität des Problems wächst mit der Zunahme der Freiheitsgrade des Systems. Die zu wählende Route (die beste Route) wird durch Einschränkungen und Begrenzungen bestimmt, wie z. B. die kürzeste Entfernung zwischen den Endpunkten oder die kürzeste Zeit für eine kollisionsfreie Fahrt. Gelegentlich werden Beschränkungen und Ziele kombiniert, z. B. der Versuch, den Energieverbrauch zu begrenzen und gleichzeitig einen bestimmten Schwellenwert für die Fahrzeit nicht zu überschreiten.\cite{Karur2021}.
 
-\section{Uninformierter Ansatz}\index{uninformiert}
+\section{Uninformierter Ansatz}
 \label{Uninformierter Ansatz}
-\subsection{Breitensuche}\index{Breitensuche}
-Die Breitensuche gehört zu den uninformierten Suchalgorithmen, diese werden auch „blind“ genannt, weil bei ihrer 
-Suche auf keine zusätzlichen Informationen (wie z.B. Wichtungen) zurückgegriffen wird.
-Bei der Breitensuche wird zunächst vom Wurzelknoten aus betrachtet alle verbunden Knoten ersten Grades besucht
-und dies Ebene für Ebene im Baum\index{Baum} wiederholt bis alle Knoten\index{Knoten} besucht wurden. 
-Die Breitensuche findet weitestgehend in der Graphentheorie seine Anwendung.\cite{Russell:10b}
+\subsection{Breitensuche}
+\label{Breitensuche}
+Die Breitensuche gehört zu den uninformierten Suchalgorithmen. Diese werden auch „blind“ genannt, weil bei ihrer 
+Suche auf keine zusätzlichen Informationen (wie z.B. Gewichtungen) zurückgegriffen wird \cite{Russell:10b}.
+Der erste Schritt der Breitensuche ist es alle verbundenen Knoten ersten Grades des Wurzelknotens zu besuchen.
+Dies wird Ebene für Ebene im Baum wiederholt, bis alle Knoten besucht wurden. 
+Die Breitensuche findet weitestgehend in der Graphentheorie ihre Anwendung \cite{Russell:10b}.
 \\
 \\
 \\
 \\
-\subsection{Tiefensuche}\index{Tiefensuche}
+\subsection{Tiefensuche}
+\label{Tiefensuche}
 Die Tiefensuche gehört ebenfalls zu den uninformierten Suchalgorithmen.
-Im Gegensatz zu der Breitensuche werden nicht die Ebenen nacheinander abgesucht sondern je Nachfolger angefangen 
-beim Wurzelknoten werden bis sie keine weiteren Nachfolger mehr haben besucht. Erst dann wird der nächste Nachbar 
-in der ersten Ebene besucht bis keine unbesuchten Knoten mehr vorhanden sind.Die Tiefensuche ist indirekt an vielen 
-komplexeren Algorithmen beteiligt. Unter anderem kann die Tiefensuche auch für das Ermitteln von Zusammenhangskomponenten
-oder für das Erzeugen eines Irrgartens verwendet werden.
-\cite{Russell:10c}
-
+Das Vorgehen bei der Tiefensuche ist es zuerst alle Unterknoten eines direkten Nachbarn des Wurzelknotens zu besuchen bis dieser keine Unterknoten mehr hat.
+Erst dann wird der nächste Nachbar in der ersten Ebene besucht bis keine unbesuchten Knoten mehr vorhanden sind \cite{Russell:10c}. Die Tiefensuche ist indirekt an vielen 
+komplexeren Algorithmen beteiligt. 
+So nutzt die iterative Vertiefungssuche die klassische Tiefensuche in Wiederholung in Verbindung mit einer inkrementellen Tiefenbegrenzung bis ein Ziel gefunden wird \cite{Russell:10d}.
+Außerdem kann die Tiefensuche auch für das Ermitteln von Zusammenhangskomponenten
+oder für das Erzeugen eines Irrgartens verwendet werden\cite{Russell:10c}.
 
 \section{Dijkstra Algorithmus}
 \label{Dijkstra Algorithmus}

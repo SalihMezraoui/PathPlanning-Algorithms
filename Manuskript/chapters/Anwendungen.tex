@@ -1,59 +1,52 @@
 \chapter{Anwendungen}
 \label{Anwendungen}
 
-In diesem Kapitel wird beschrieben, wie Dijkstra- und Bellman-Algorithmen in realen Anwendungen angewendet werden können.
-
-
+In diesem Kapitel wird beschrieben, wie Pfadplanung Algorithmen in realen Anwendungen eingesetzt werden können.
 \section{GIS(Geoinformationssystem)}
 \label{GIS(Geoinformationssystem)}
 \subsection{Definition}
 
-
-nach Vaibhavi Patel und Prof.Chitra Baggar „Ein geografisches Informationssystem (GIS) ist ein computergestütztes Werkzeug. Mit diesen Werkzeugen können wir räumliche Informationen erstellen, manipulieren, analysieren, speichern und anzeigen. Räumliche Informationen sind Informationen über Objekte, die sich auf der Erde befinden, wie z. B. Städte, Eisenbahnstrecken, Flüsse usw“\footnote{GIS Definition \cite{Vaibhavi2014}}. 
+Ein geografisches Informationssystem (GIS) ist ein System zum Erstellen, Verwalten, Analysieren und Kartieren verschiedener Arten von Daten. GIS verknüpft Daten mit einer Karte und integriert Standortdaten mit verschiedenen Arten von beschreibenden Daten. Dies ist die Grundlage für die Kartierung und Analyse in der Wissenschaft und in fast allen Branchen.
+Bei diesen Daten handelt es sich um Informationen über Objekte auf der Erde wie Städte, Eisenbahnstrecken, Flüsse usw\cite{Vaibhavi2014}. 
 
 \subsection{Geoinformationssystem mit Dijkstra-Algorithmus}
-Obwohl dieser Dijkstra-Algorithmus sehr effektiv zu sein scheint, kann es im Grunde genommen sehr lange dauern, die Route vom Start bis zum Ende weiterzuleiten, wobei eine große Menge an Informationen verwendet wird, wie in der Abbildung 4.1 zu sehen ist, was überhaupt nicht angemessen ist, so dass eine Alternative entwickelt werden muss, um die Zeit zu verkürzen\cite{HamidAli2020}.
+Algorithmen für den kürzesten Weg werden in Kartenplattformen wie Google Maps verwendet, um den kürzesten Weg zwischen zwei Punkten zu ermitteln.
+Obwohl der Dijkstra-Standardalgorithmus in diesem Fall anwendbar zu sein scheint, dauert das Routing des Pfades vom Startpunkt zum Endpunkt in einer großen Datenmenge sehr lange\cite{HamidAli2020}.
+\newline
+\newline
+ Um bei der Berechnung des kürzesten Weges Zeit zu sparen und eine bessere Lösung zu erhalten. Beeinflusst von \cite{HamidAli2020}, der bessere Ansatz besteht darin, vor dem Start des Dijkstra-Algorithmus einen temporären Datensatz zu erstellen und ihn so zu behandeln, als wäre er der Graph, mit dem der Algorithmus arbeiten muss. 
+ Nachdem die Start- und Endknoten ermittelt wurden, wird dieser Datensatz erstellt. Der Datensatz kann anhand der Koordinaten des Start- und des Zielknotens aus den Hauptdaten ausgeschlossen werden, indem nur die Knoten ausgewählt werden, die sich innerhalb des von den beiden Knoten gebildeten Quadrats befinden.
+ Es gibt andere Algorithmen, die in GIS verwendet werden können, um bessere Ergebnisse zu erzielen, wie z. B. A*.
+
+
+
+\section{Mobile Roboter}
+\label{Mobile Roboter}
+\subsection{Einleitung}
+Mit der Weiterentwicklung der Internet-of-Things-Technologien in den letzten Jahren hat die Entwicklung intelligenter Städte in der Industrie große Aufmerksamkeit erlangt.
+Die Steuerung mobiler Roboter ist ein wichtiges Thema in intelligenten Städten und die Pfadplanung ist eine wichtige Komponente unter den mobilen Roboter-Technologien, die dem Roboter hilft, den Weg von einem Startpunkt zu einem Zielpunkt zu finden und dabei sicher und zuverlässig alle Hindernisse in einer statischen und dynamischen Umgebung während der Reise zu vermeiden \cite{Myung21,Hong-mei17}.
+
+\subsection{Umgebungsmodell }
+Das Rolling-Window-Prinzip wird zur Hindernisvermeidung in einer unbekannten Umgebung verwendet, während die Algorithmen Dijkstra und A* in erster Linie für die Pfadplanung in einer bekannten Umgebung eingesetzt werden.
+\newline
+Da sowohl der Dijkstra- als auch der A*-Algorithmus Gitter-basierte Suchmethoden sind, sollte zunächst das Gittermodell der umgebenden Karte erstellt werden. Bei der Gittermethode wird die Karte in benachbarte Gitter gleicher Größe unterteilt. 
+Die Größe des mobilen Roboters bestimmt die Größe des Gitters und beeinflusst die Suchgenauigkeit und Effizienz des Algorithmus\cite{Hong-mei17}.
+\newline
+Das Gittermodell einer Umgebungskarte ist in der Abbildung \ref{fig:Umgebungsmodell-Grid} unten dargestellt.
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.7\textwidth]{images/GIS_red.PNG}
-	\caption{\label{fig:GIS_red}Dijkstra's Fortschritt\cite{HamidAli2020}.}
+	\includegraphics[width=0.5\textwidth]{images/Grid_Modell.PNG}
+	\caption{Umgebungsmodell angelehnt an \cite{Hong-mei17}.}
+	\label{fig:Umgebungsmodell-Grid}
 \end{figure}
 
-So haben die Autoren des Artikels\footnote{GIS Beispiel \cite{HamidAli2020}}  ihr Experiment wie folgt beschrieben:
-\newline
-\newline
- „Der rote Kreis stellt den Verlauf des Dijkstra-Algorithmus dar, während der blaue Kreis die tatsächlichen Knoten und Linien des Graphen anzeigt, die der Algorithmus verarbeiten muss, bevor er die korrekte Wurzel von A nach B berechnen kann. Der verbesserte Algorithmus kann den Suchbereich erheblich verkleinern, wie in Abbildung 4.2 dargestellt. Dies ist nur ein Bruchteil des Bereichs in der vorherigen Abbildung. Er ermöglicht wesentlich schnellere Berechnungen und verkürzt damit die Zeit, die der Routing-Prozess benötigt, um einen gültigen Pfad zu finden. Die Verbesserungsmethode besteht im Wesentlichen darin, einen temporären Datensatz zu erstellen, bevor der Dijkstra-Algorithmus selbst gestartet wird, und diesen so zu behandeln, als wäre er der Graph, mit dem der Algorithmus arbeiten muss. Dieser Datensatz wird erstellt, nachdem die Start- und Endknoten erfasst wurden. Mit den Koordinaten der Start- und Endknoten kann der Datensatz aus den Hauptdaten ausgeschlossen werden, indem nur die Knoten ausgewählt werden, die sich innerhalb des von den beiden Knoten gebildeten Quadrats befinden“.
+\subsection{Dijkstras Algorithmus und A*-Algorithmus}
 
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=0.7\textwidth]{images/GIS_blue.PNG}
-	\caption{\label{fig:GIS_red}Verbesserter Suchbereich\cite{HamidAli2020}.}
-\end{figure}
+Die Idee ist, A*- und Dijkstra-Algorithmen miteinander zu kombinieren, um die Effizienz der Planung einer idealen kollisionsfreien Route für einen mobilen Roboter zu erhöhen. Bei der Neuplanung wird die Dijkstra-Methode zur Vorverarbeitung der statischen Umgebungskartendaten angewendet, die optimale Routen vom Ziel G zu allen freien Zuständen plant und speichert. Wenn der Roboter auf seinem Weg zum Ziel auf ein bewegliches Hindernis trifft, wählt das Rolling-Window-Prinzip einen lokal optimalen Zustand als nächsten Zielzustand. Dann wird mit dem A*-Algorithmus eine lokal optimale Route von der Roboterposition zum lokalen Ziel neu geplant.
+Die neue Route kann den Roboter um Hindernisse herumführen\cite{Hong-mei17}.
 
-\section{Mobile Roboter mit verbessertem Dijkstra-Algorithmus}
-\label{Mobile Roboter mit verbessertem Dijkstra-Algorithmus}
-\subsection{traditioneller Dijkstra vs verbesserter Dijkstra }
 
-Die Autoren des Artikels\footnote{Vergleich zwischen Standard und verbessert Dijkstra \cite{Karur2021}} haben zitiert dass:
-„Der traditionelle Dijkstra-Algorithmus beruht auf einer gierigen Strategie zur Pfadplanung. Er wird verwendet, um den kürzesten Weg in einem Graphen zu finden. Er befasst sich mit der Lösung des kürzesten Weges, ohne sich formal um die Pragmatik der Lösung zu kümmern.
-\newline
-\newline
- Der modifizierte Dijkstra-Algorithmus zielt darauf ab, alle Knoten mit gleichem Abstand zum Ausgangsknoten als Zwischenknoten zu reservieren, und sucht dann von allen Zwischenknoten aus weiter, bis er erfolgreich zum Zielknoten durchläuft, siehe Abbildung 4.3. Durch Iteration werden alle möglichen kürzesten Wege gefunden und können dann ausgewertet werden“.
-
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=0.7\textwidth]{images/Activity_robot.PNG}
-	\caption{\label{fig:Robot}Flussdiagramm des verbesserten Dijkstra für die Pfadplanung\cite{Karur2021}.}
-\end{figure}
-
-\subsection{Verbesserter Dijkstra }
-Die Autoren des Artikels\footnote{ verbesserter Dijkstra für Mobile Roboter \cite{Karur2021}} haben der verbesserte Dijkstra-Algorithmus so beschrieben:
-„Der Dijkstra-Algorithmus kann außer den bereits durchlaufenen Knoten keine Daten speichern. Um diesen Nachteil zu überwinden, wird ein Speicherschema eingeführt, das ein mehrschichtiges Wörterbuch implementiert, das aus zwei Wörterbüchern und einer Liste von Datenstrukturen besteht, die in hierarchischer Reihenfolge organisiert sind. Das erste Wörterbuch bildet jeden einzelnen Knoten auf seine Nachbarknoten ab. Das zweite Wörterbuch speichert die Pfadinformationen jedes benachbarten Pfades.
-\newline
-\newline
-
-Ein mehrschichtiges Wörterbuch bietet eine umfassende Datenstruktur für den Dijkstra-Algorithmus in einer Innenraumanwendung, bei der die Koordinaten des globalen Navigationssatellitensystems und die Kompassorientierung nicht zuverlässig sind. Die Pfadinformationen in der Datenstruktur helfen dabei, den Grad des Drehwinkels zu bestimmen, den der Roboter an jedem Knoten oder jeder Kreuzung ausführen muss. Der vorgeschlagene Algorithmus liefert den kürzesten Pfad in Bezug auf die Länge und gleichzeitig den navigierbarsten Pfad in Bezug auf den niedrigsten erforderlichen Gesamtdrehwinkel in Grad, der mit dem traditionellen Dijkstra-Algorithmus nicht berechnet werden kann“.
 
 \section{Autonome Navigation}
 \label{Autonome Navigation}

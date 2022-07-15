@@ -4,25 +4,27 @@ In den letzten Jahren hat die Pfadplanung immer mehr an Relevanz gewonnen, zum B
 im Bereich der Pfadplanungsalgorithmen betrieben. \cite{Karur:21}
 \noindent \\
 \begin{itemize}
-    \item Bevor ein Programm mit der Suche nach der besten Lösung (dem besten Weg) beginnen kann, muss erst ein Ziel deklariert und das Problem (Umgebung) genau definiert werden.
-    \item Suchalgorithmen behandeln Zustände und Aktionen atomar: Sie berücksichtigen keine interne Struktur, die sie besitzen könnten \cite[108,109]{Russell:10}.
-    \item Uninformierte Pfadsuchalgorithmen haben nur Zugriff auf die grundlegenden Problemdefinition. In der wissenschaftlichen Arbeit wurden folgende uninformierte Algorithmen vorgestellt:
+    \item Bevor ein Programm mit der Suche nach der besten Lösung (dem besten Weg) beginnen kann, muss erst ein Ziel deklariert und das Problem (Umgebung) genau definiert werden \cite[108,109]{Russell:10}.
+    \item Suchalgorithmen betrachten Zustände und Aktionen atomar, das heißt sie berücksichtigen keine interne Struktur, die sie besitzen könnten \cite[108,109]{Russell:10}.
+    \item Sie werden nach folgenden Kriterien bewertet: Optimalität, Vollständigkeit, sowie Raum- und Zeitkomplexität \cite[80]{Russell:10}.
+    \item Uninformierte Pfadsuchalgorithmen verfügen nur über eine grundlegenden Problemdefinition und keine weiteren Metriken/Heuristiken. In der wissenschaftlichen Arbeit wurden folgende uninformierte Algorithmen vorgestellt:
     \begin{itemize}
         \item Die Breitensuche (Kapitel \ref{Breitensuche}) expandiert zuerst die flachsten Knoten. Sie ist vollständig, optimal für einheitliche Pfadkosten, hat jedoch eine exponentielle Raumkomplexität \cite[81]{Russell:10}.
         \item Die Tiefensuche (Kapitel \ref{Tiefensuche}) expandiert zuerst den tiefsten nicht expandierten Knoten. Sie ist weder vollständig noch optimal, hat aber eine lineare Raumkomplexität \cite[85,86]{Russell:10}.
         \item Die iterative Vertiefungssuche (Kapitel \ref{Tiefensuche}) ist eine Wiederholung der Tiefensuche mit zunehmender Tiefenbegrenzung, bis ein Ziel gefunden wird. Sie ist vollständig, optimal für die Kosten pro Schritt, hat eine vergleichbare Zeitkomplexität wie die Breitensuche und eine lineare Raumkomplexität\cite[85,86]{Russell:10}.
         \item Der Greedy Dijkstra-Algorithmus (Kapitel \ref{Dijkstra Algorithmus}) der zwar bei der blinden Suche Zeit vergeudet, aber dafür optimal ist und eine Trefferquote von 100\% hat \cite{Karur:21}.
-        \item Die Optimierung durch eine bidirektionale Suche kann die Zeitkomplexität enorm reduzieren, sie ist allerdings nicht immer anwendbar und kann viel Speicherplatz beanspruchen.\\\\
+        \item Die Optimierung durch eine bidirektionale Suche kann die Zeitkomplexität reduzieren, allerdings ist sie nicht immer für das Problem geeignet und kann viel Speicherplatz beanspruchen \cite[108,109]{Russell:10}.\\\\
     \end{itemize}
     \newpage
-    \item Informierte Suchmethoden basieren auf heuristischen Funktionen, die die Kosten einer Lösung schätzen
+    \item Informierte Suchmethoden basieren auf heuristischen Funktionen, die die Kosten einer Lösung schätzen können \cite[108,109]{Russell:10}. 
     \begin{itemize}
-        \item Der Greedy Best-First-Search-Algorithmus (Kapitel \ref{Optimierungsstrategien}) expandiert Knoten nach einem minimalem heuristischem Funktionswert. Er ist zwar nicht optimal, aber oft effizient \cite[108,109]{Russell:10}.
+        \item Der Greedy Best-First-Search-Algorithmus (Kapitel \ref{Optimierungsstrategien}) expandiert Knoten nach einem minimalem heuristischem Funktionswert. Er ist nicht optimal, aber dafür effizient \cite[108,109]{Russell:10}.
         \item A*-Suche (Kapitel \ref{A*}) expandiert Knoten mit minimalem Heuristischen Funktions- und Pfadkostenwerten. A* ist vollständig und optimal, vorausgesetzt die heuristische Funktion ist zulässig.
         \item ALT-Algorithmen (Kapitel \ref{ALT-Algorithmen}), die aufgebaut auf A* durch Preprocessing noch optimiertere Ergebnisse erzeugt.
         \item Reach-based Pruning (Kapitel \ref{Reach-Based Pruning}), welches den Dijkstra-Algorithmus um eine Metrik erweitert und dadurch optimiert.
     \end{itemize}
+    \item Wie ein, durch eine heuristische Funktion optimierten, informierter Pfadsuchalgorithmus leistungsbezogen abschneidet, hängt von der Qualität der heuristischen Funktion ab \cite[108,109]{Russell:10}.
 \end{itemize}
 \noindent \\
-Alle diese Algorithmen haben diverse Vor- und Nachteile und daraus ergeben sich verschiedene 
+All diese Algorithmen haben diverse Vor- und Nachteile und daraus ergeben sich verschiedene 
 Anwendungsbereiche, auf welche wir in Kapitel \ref{Anwendungen} gesondert eingegangen sind.

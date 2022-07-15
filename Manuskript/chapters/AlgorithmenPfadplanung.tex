@@ -14,32 +14,55 @@ Die Dijkstra- und Bellman-Algorithmen für den kürzesten Weg sind in einer Viel
 weit verbreitet. Beispiele für diese Anwendungen sind Routing-Protokolle für Netzwerke, Routenplanung, 
 Verkehrssteuerung, Pfadfindung in sozialen Netzwerken, Computerspiele und Navigationssysteme \cite{Panda:18}.
 
-\section{Uninformierter Ansatz}
-\label{Uninformierter Ansatz}
-Als Einstieg in die Thematik der Pfadplanung wird der Uninformierte Ansatz beschrieben.
+\section{Uninformierte Suche}
+\label{Uninformierte Suche}
+Als Einstieg in die Thematik der Pfadplanung wird die Uninformierte Suche beschrieben.
 Uninformierte Algorithmen werden auch „blind“ genannt, weil bei ihrer 
-Suche auf keine zusätzlichen Informationen (wie z.B. Gewichtungen) zurückgegriffen wird \cite[81]{Russell:10}.
+Suche auf keine zusätzlichen Informationen (wie z.B. Gewichtungen) zurückgegriffen wird \cite[80-82]{Russell:10}.
+
+Nach \cite[80-82]{Russell:10} gibt es 4 Hauptkriterien nach denen Pfachsuchalgorithmen bewertet werden können:
+\begin{itemize}
+	\item \emph{Vollständigkeit}: Liefert der Algorithmus immer eine Lösung, wenn es eine Lösung gibt?
+	\item \emph{Optimalität}: Liefert der Algorithmus einen optimalen Weg?
+	\item \emph{Zeitkomplexität}: Wie lange dauert es bis der Algorithmus einen Weg gefunden hat?
+	\item \emph{Raumkomplexität}: Wie viel Speicher wird benötigt um die Lösung zu finden?
+\end{itemize}
+\newpage
 \subsection{Breitensuche}
 \label{Breitensuche}
 Die Breitensuche gehört zu den uninformierten Suchalgorithmen. 
-Der erste Schritt der Breitensuche ist es alle verbundenen Knoten ersten Grades des Wurzelknotens zu besuchen.
-Dies wird Ebene für Ebene im Baum wiederholt, bis alle Knoten besucht wurden. 
-Die Breitensuche findet weitestgehend in der Graphentheorie ihre Anwendung \cite[81]{Russell:10}.
+Der erste Schritt der Breitensuche ist es, wie man in Abb \ref{fig:Breitensuche} sehen kann, alle verbundenen Knoten ersten Grades des Wurzelknotens zu besuchen \cite[80-82]{Russell:10}.
+Erst dann wird die nächste Ebene besucht. Dies wird Ebene für Ebene im Baum wiederholt, bis alle Knoten besucht wurden. 
+Die Breitensuche ist vollständig und bei z.B gleichverteilten Aktionskosten auch optimal \cite[80-82]{Russell:10}.
+\begin{figure}
+	\centering
+	\includegraphics[width=1.0\textwidth]{images/breitensuche.png}
+	\caption{Breitensuche in einem Binärbaum. Unbesuchte Knoten werden hellgrau dargestellt, besuchte Knoten werden dunkelgrau dargestellt.}
+	\label{fig:Breitensuche}
+\end{figure}
 \\
-\\
-\\
-\\
+\newpage
 \subsection{Tiefensuche}
 \label{Tiefensuche}
 Die Tiefensuche gehört ebenfalls zu den uninformierten Suchalgorithmen.
-Das Vorgehen bei der Tiefensuche ist es zuerst alle Unterknoten eines direkten Nachbarn des Wurzelknotens zu besuchen bis dieser 
-keine Unterknoten mehr hat.
-Erst dann wird der nächste Nachbar in der ersten Ebene besucht bis keine unbesuchten Knoten mehr vorhanden sind \cite[85,86]{Russell:10}. 
-Die Tiefensuche ist indirekt an vielen komplexeren Algorithmen beteiligt. 
-So nutzt die iterative Vertiefungssuche die klassische Tiefensuche in Wiederholung in Verbindung mit einer inkrementellen 
-Tiefenbegrenzung bis ein Ziel gefunden wird \cite[108,109]{Russell:10}.
-Außerdem kann die Tiefensuche auch für das Ermitteln von Zusammenhangskomponenten
-oder für das Erzeugen eines Irrgartens verwendet werden \cite[85,86]{Russell:10}.
+Das Vorgehen bei der Tiefensuche ist es, wie man in Abb. \ref{fig:Tiefensuche} sehen kann, zuerst alle Unterknoten eines direkten Nachbarn (z.B Knoten $B$) des Wurzelknotens $A$ zu besuchen bis dieser 
+keine unbesuchten Unterknoten mehr hat \cite[85,86]{Russell:10}.
+Erst dann wird der nächste Nachbar, in Abb. \ref{fig:Tiefensuche} Knoten $C$, in der ersten Ebene besucht, bis keine unbesuchten Knoten mehr vorhanden sind oder der Zielknoten gefunden wurde \cite[85,86]{Russell:10}.
+Es gibt 2 Versionen der Tiefensuche: die Version, die in einem Graphen einen kürzesten Weg zu einem Ziel sucht, und die Version, 
+die in einer Baumstruktur den kürzesten Weg sucht \cite[85,86]{Russell:10}.
+Nur die Version, welche in einem Graphen sucht, ist in endlicher Raumkomplexität vollständig, die Version mit Baumstruktur ist leider nicht vollständig. \cite[85,86]{Russell:10}.
+
+Die Tiefensuche ist (indirekt) an vielen komplexeren Algorithmen beteiligt. 
+So führt die iterative Vertiefungssuche die klassische Tiefensuche wiederholt und in Verbindung mit einer steigenden 
+Tiefenbegrenzung aus, bis ein Ziel gefunden wird \cite[108,109]{Russell:10}.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1.0\textwidth]{images/tiefensuche.png}
+	\caption{Tiefensuche in einem Binärbaum. $A$ ist der Startknoten und $M$ ist der Zielknoten, unentdeckte Knoten sind hellgrau. 
+		Bereits entdeckte Knoten ohne weitere Unterknoten werden entfernt.}
+	\label{fig:Tiefensuche}
+\end{figure}
 
 \section{Dijkstra Algorithmus}
 \label{Dijkstra Algorithmus}
@@ -116,7 +139,7 @@ ist \cite{Zhou:19,Abusalim2020}.
 \\ \\
 Der Hauptnachteil des Algorithmus besteht darin, dass er eine blinde Suche durchführt, was eine erhebliche Menge an Zeit und Ressourcen vergeudet. 
 Ein weiterer Nachteil ist, dass er nicht mit negativen Kanten umgehen kann, was zu azyklischen Graphen führt, und daher nicht immer den kürzesten 
-Weg findet \cite{Mukhlif2020}.
+Weg findet \cite{Mukhlif:20}.
 
 
 \section{Bellman-Ford Algorithmus}

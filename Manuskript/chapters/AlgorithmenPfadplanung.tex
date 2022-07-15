@@ -1,12 +1,15 @@
 \chapter{Algorithmen zur Pfadplanung}\index{Algorithmen}\index{Pfadplanung}\index{Algorithmus}
-In diesem Kapitel werden zwei der am häufigsten verwendeten Algorithmen (Dijkstra und Bellman) für die Planung von Pfaden beschrieben.
+In diesem Kapitel werden zwei der bekanntesten Algorithmen (Dijkstra und Bellman-Ford) zur Pfadplanung beschrieben.
 
-\section{Was ist Pfadplanung?}
+\section{Einleitung}
 \label{Was ist Pfadplanung?}
-Karthik Karur, Nitin Sharma, Chinmay Dharmatti, und Joshua E. Siegel haben Pfadplanung definiert als „ein nicht-deterministisches Polynomialzeit ("NP") schweres Problem definiert, dessen Aufgabe es ist, einen kontinuierlichen Pfad zu finden, der ein System von einer Anfangs- zu einer Endkonfiguration verbindet“\footnote{Definition der Pfadplanung \cite{Karur2021}}.
+Die Pfadplanung ist ein nichtdeterministisches Problem mit polynomialer Zeit ("NP"), bei dem es darum geht, einen Pfad zu finden, der ein System von seinem Ausgangspunkt zu seinem Ziel verbindet. Der zu wählende Weg (die beste Route) wird durch Beschränkungen und Bedingungen bestimmt\cite{Karur:21}.
 \newline
 \newline
-Die Komplexität des Problems wächst mit der Zunahme der Freiheitsgrade des Systems. Die zu wählende Route (die beste Route) wird durch Einschränkungen und Begrenzungen bestimmt, wie z. B. die kürzeste Entfernung zwischen den Endpunkten oder die kürzeste Zeit für eine kollisionsfreie Fahrt. Gelegentlich werden Beschränkungen und Ziele kombiniert, z. B. der Versuch, den Energieverbrauch zu begrenzen und gleichzeitig einen bestimmten Schwellenwert für die Fahrzeit nicht zu überschreiten.\cite{Karur2021}.
+In der Informatik, insbesondere in der Graphentheorie, ist das Problem des kürzesten Weges bekannt. Der kürzestmögliche Weg von einer Quelle zu einem Ziel hat die geringsten Längenanforderungen.
+\newline
+\newline
+Die Dijkstra- und Bellman-Algorithmen für den kürzesten Weg sind in einer Vielzahl von Bereichen und Anwendungen weit verbreitet. Beispiele für diese Anwendungen sind Routing-Protokolle für Netzwerke, Routenplanung, Verkehrssteuerung, Pfadfindung in sozialen Netzwerken, Computerspiele und Verkehrssysteme\cite{Panda:18}.
 
 \section{Uninformierter Ansatz}\index{uninformiert}
 \label{Uninformierter Ansatz}
@@ -34,73 +37,83 @@ oder für das Erzeugen eines Irrgartens verwendet werden.
 \label{Dijkstra Algorithmus}
 \subsection{Definition}
 
-Adeel Javaid beschrieb, dass „Der Dijkstra-Algorithmus (benannt nach seinem Entdecker E.W. Dijkstra) das Problem löst, den kürzesten Weg von einem Punkt in einem Diagramm (der Quelle) zu einem Ziel zu finden“\footnote{Dijkstra Algorithmus Definition \cite{Javaid2019}}.
+Der Dijkstra-Algorithmus (benannt nach seinem Entdecker E.W. Dijkstra) ist ein bekannter Algorithmus auf dem Gebiet der optimalen Pfadwahl und wird verwendet, um den kürzesten Pfad von einem Startpunkt in einem Graphen zu einem Zielpunkt zu finden\cite{Javaid2019}.
 
-\subsection{Prinzip}
+\subsection{Funktionsprinzip}
 
-Da nachgewiesen wurde, dass die kürzesten Wege von einem Quellknoten zu allen Orten in einem Diagramm tatsächlich in derselben Zeit gefunden werden können, wird dieses Problem manchmal als Problem der kürzesten Wege für eine einzige Quelle bezeichnet\cite{Javaid2019}.
+Das Grundkonzept des Algorithmus ist wie folgt:
 \newline
 \newline
-Der Dijkstra-Algorithmus kann die beste Route wählen, die die Voraussetzungen für die Topologie-Roadmap erfüllt. Der klassische Dijkstra-Algorithmus unterteilt die Knoten im topologischen System in drei Gruppen: zunächst alle vorläufigen Knoten im System des Algorithmus, die nicht gekennzeichnet sind, und die Knoten, die sich während der Routenauswahl und der effizienten Routenauswahl kreuzen und verbinden sollen. Jede Screening-Schleife im optimalen Routenauswahlverfahren wählt den Knoten mit der kürzesten Pfadlänge vom momentanen Indikator knoten als permanenten Markierung-knoten, und der Dijkstra-Algorithmus iteriert, bis der aktuelle und der geplante oder alle Knoten erreicht sind. Der Knoten würde dann so lange bestehen bleiben, bis er durch einen permanenten Markierung-knoten ersetzt wird\cite{Zhou2013}.
+In einem ersten Schritt wird der Startknoten festgelegt und der Abstand zwischen ihm und den anderen Knoten des Graphen berechnet. Gibt es keinen Bogen, der diesen Scheitelpunkt mit dem Startpunkt verbindet, ist der Abstand unendlich; gibt es einen Bogen, der diesen Scheitelpunkt mit dem Startpunkt verbindet, ist der Abstand n; und das niedrigste Gewicht (wenn es mehrere Bögen gibt) ist n.
+\newline
+\newline
+Der zweite Schritt besteht darin, den Punkt mit dem kürzesten Abstand zum Startpunkt zu ermitteln und zu speichern. Die zuvor ermittelte Entfernung wird mit derjenigen verglichen, die über den soeben beiseite gelegten Scheitelpunkt für alle verbleibenden Scheitelpunkte ermittelt wurde, und nur der kleinste der beiden Werte wird beibehalten. Dieser Vorgang wird so lange wiederholt, bis es keine Scheitelpunkte mehr gibt oder bis der Ankunftsscheitelpunkt gewählt ist\cite{Zhou:19}.
 
-\subsection{Dijkstras Vorteile}
+\subsection{Vor- und Nachteile}
 
+Der Dijkstra-Algorithmus hat zwei wesentliche Vorteile: Er kann alle optimalen Pfade finden und die Trefferquote dieser optimalen Pfade liegt bei 100 \%. Der zweite Vorteil ist, dass er die verbleibenden unerwünschten Knoten nicht besucht, wenn der beabsichtigte Zielknoten erreicht ist\cite{Zhou:19,Abusalim2020}.
+\newline
+\newline
+Der Hauptnachteil des Algorithmus besteht darin, dass er eine blinde Suche durchführt, was eine erhebliche Menge an Zeit und Ressourcen vergeudet. Ein weiterer Nachteil ist, dass er nicht mit negativen Kanten umgehen kann, was zu azyklischen Graphen führt, und daher nicht immer den kürzesten Weg findet\cite{Mukhlif2020}.
+
+\subsection{Pseudo-Code}
+
+Der Dijkstra-Algorithmus arbeitet mit der Zuweisung einiger vorläufiger Entfernungswerte und versucht, diese schrittweise zu verbessern. Der Pseudocode des Algorithmus ist in der Abbildung \ref{fig:Dijkstra Pseudo-Code}  dargestellt\cite{Huang2012}.
+\newline
+\newline
+Im Folgenden wird die Umsetzung des unten stehenden Pseudocodes erläutert, angelehnt an  \cite{Abusalim2020}.
+\newline
+Beim Dijkstra-Algorithmus ist die Route unbekannt. Die Knoten werden als temporär (t) oder permanent (p) eingestuft.
 \begin{itemize}
-	\item Minhang Zhou und Nina Gao haben zitiert „Der Dijkstra-Algorithmus kann alle optimalen Pfade finden, und die Trefferquote dieser optimalen Pfade liegt bei 100 \%“\footnote{Ertster Vorteil von Dijkstra \cite{Zhou2013}}.
-	\item Wenn der geplante Zielknoten erreicht ist, besucht der Dijkstra-Algorithmus die restlichen unerwünschten Knoten nicht\cite{Abusalim2020}. 
+	\item  Schritt1: die Entfernung des Quellknotens wird der Wert Null zugewiesen [distance (source) = 0], und die Entfernung der anderen Knoten wird auf unendlich gesetzt [distance(x) = Infinity].
+	\item Schritt 2: Suche des Knotens x mit der kürzesten Entfernung d(x). Wenn d(x) unendlich ist oder es keine temporären Knoten gibt, wurde der Knoten x als permanent markiert, was bedeutet, dass sich d(x) und sein übergeordneter Wert nicht ändern werden.
+	\item Schritt 3: Für jeden temporären Knoten mit dem Label y, der an x angrenzt, wird der folgende Vergleich durchgeführt:
+
+	
 \end{itemize}
+\begin{gather*} 
+		wenn \ d(x) + w (x, y) < d(y)  \ dann \\
+		D(y) = d(x) + w (x, y)
+\end{gather*}
+\newline
+Wenn die Entfernung des gekennzeichneten Knotens y größer ist als die Entfernung des gekennzeichneten Knotens x plus Verbindungsgewicht (x, y), wird die Entfernung des gekennzeichneten Knotens y gemäß der Gleichung aktualisiert.
 
-
-\subsection{Dijkstras Nachteile}
-
-Der Hauptnachteil des Algorithmus besteht darin, dass er eine blinde Suche durchführt, wodurch viel Zeit und relevante Ressourcen verschwendet werden, oder anders ausgedrückt, er ist zeitintensiv. Ein weiterer Nachteil ist, dass er keine negativen Seiten verwalten kann, was zu azyklischen Graphen führt, und dass er häufig nicht die beste Route findet\cite{Mukhlif2020}.
-
-\subsection{Dijkstras Pseudo-Code}
-
-Der Dijkstra-Algorithmus arbeitet mit der Zuweisung einiger vorläufiger Entfernungswerte und versucht, diese schrittweise zu verbessern. Der Pseudocode des Algorithmus ist in der folgenden Abbildung dargestellt\cite{Huang2012}.
- \begin{figure}[H]
+\begin{figure}[H]
 	\centering
 	\includegraphics[width=1.0\textwidth]{images/Dijkstra_pseudoCode.PNG}
-	\caption{\label{fig:Dijkstra}Dijkstra Algorithmus Pseudo-Code \cite{Abusalim2020}.}
+	\caption{Dijkstra Algorithmus Pseudo-Code, angelehnt an \cite{Abusalim2020}.}
+	\label{fig:Dijkstra Pseudo-Code}
 \end{figure}
 
-Abusalim Samah, Ibrahim Rosziati, Saringat Mohd, Jamel Sapiee und Wahab Jahari haben  diesen Pseudocode wie folgt beschrieben:
-\newline
-\newline
- „Beim Dijkstra-Algorithmus ist der Pfad nicht bekannt. Die Knoten werden in zwei Gruppen unterteilt: temporäre (t) und permanente (p).
-\begin{itemize}
-	\item  Zunächst wird die Entfernung des Quellknotens mit dem Wert Null initialisiert [distance(a) = 0], und die Entfernung der anderen Knoten wird mit dem Wert Unendlich belegt [distance(x) = infinity]. 
-	\item Schritt 2: Suche nach dem Knoten x mit dem kleinsten Wert von d(x). Wenn es keine temporären Knoten gibt oder der Wert von d(x) gleich unendlich ist, wurde der Knoten x als permanent eingestuft, was bedeutet, dass sich d(x) und der übergeordnete Wert von d(x) nicht mehr ändern werden. 
-	\item Schritt 3: Wenden Sie den folgenden Vergleich für jeden temporären Knoten mit der Bezeichnung vertex y an, der an x angrenzt“\footnote{Ausführliche Beschreibung von Dijkstra Pseudo Code \cite{Abusalim2020}}.
-\end{itemize}
 
 
-\section{Bellman-Ford-Algorithmus}
+
+\section{Bellman-Ford Algorithmus}
 \label{Bellman-Ford-Algorithmus}
 \subsection{Definition}
 
-Vaibhavi Patel und Prof.ChitraBaggar haben benotet dass, „Der Bellman-Ford-Algorithmus verwendet Entspannung, um kürzeste Pfade auf gerichteten Graphen zu finden, die nur eine Quelle haben“\footnote{Bellman-Ford-Algorithmus Definition \cite{Vaibhavi2014}}.
-\subsection{Prinzip}
-Wenn es negative Gewichtsnusszyklen gibt, wird der Algorithmus sie erkennen. Eine negative Länge gibt es nicht, wenn es sich um Bereiche auf einer Karte handelt. Der Ballmann-Ford-Algorithmus ist im Allgemeinen mit dem Dijkstra-Algorithmus vergleichbar. Er entspannt alle Kanten |V| mal, wobei |V| die Menge der Scheitelpunkte ist\cite{Vaibhavi2014}.
-
-\subsection{Bellman-Ford Pseudo-Code}\index{Bellman-Ford}
-Der Bellman-Ford-Algorithmus wird wie in der Abbildung unten dargestellt ausgeführt.
-
-
- \begin{figure}[H]
-	\centering
-	\includegraphics[width=1.0\textwidth]{images/Bellman-Ford-Algorithmus_Pseudo-Code.PNG}
-	\caption{\label{fig:Bellman}Bellman-Ford Pseudo-Code\cite{Abusalim2020}.}
-\end{figure}
-Abusalim Samah, Ibrahim Rosziati, Saringat Mohd, Jamel Sapiee und Wahab Jahari haben sie diesen Pseudocode wie folgt beschrieben:
+In 1958 veröffentlichte Richard Bellman den Bellman-Ford-Algorithmus, einen Graphen-Suchalgorithmus zur Ermittlung des kürzesten Pfades.\cite{Abusalim2020,Sulaiman18}.
+\subsection{Eigenschaften}
+Um kürzeste Wege auf gerichteten Graphen zu finden, nutzt der Bellman-Ford-Algorithmus die Entspannung. Er hat auch einige negative Kanten. Wenn es Zyklen mit negativem Gewicht gibt, wird der Algorithmus sie erkennen (so dass es keine Lösung gibt)\cite{Vaibhavi2014}.
 \newline
+Die Vorteile dieses Algorithmus sind unter anderem, dass es sich um einen dynamischen Algorithmus handelt, dass er negative gerichtete Kanten (und auch positive) berechnen kann, dass er die Kosten für den Aufbau des Netzes reduzieren kann, indem er den kürzesten Weg von einem Knoten zum anderen findet, und dass er die Anzahl der aufgebauten Router-Pfad reduzieren kann\cite{Abusalim2020}.
+
+\subsection{Pseudo-Code}\index{Bellman-Ford}
+
+Angelehnt an \cite{Abusalim2020} wird der Bellman-Ford-Algorithmus wie folgt ausgeführt:
 \newline
 \begin{itemize}
-	\item   „Schritt 1: Setzen Sie den Abstand des Quellknotens s auf den Wert Null (distance[s] = 0) und weisen Sie den anderen Knoten einen Abstand von INFINITY zu. 
-	\item Schritt 2: entspannt jede Kante (n - 1) Mal, wenn n die Anzahl der Knoten ist. Das Entspannen einer Kante bedeutet zu prüfen ob es möglich ist, den Weg zu dem Knoten, auf den die Kante zeigt, zu verkürzen, und, wenn ja, den Weg zu den Knoten durch die gefundene Route. 
-	\item Schritt 3: Prüfen, ob der Graph einen negativen Zyklus hat, mit Ausführung der N-ten Schleife“\footnote{Ausführliche Beschreibung von Bellman-Ford Pseudo Code \cite{Abusalim2020}}.
+	\item   Schritt 1: Zuweisung des Abstandswertes des Quellpunktes s zu null (distance[s] = 0) und des Abstandswertes der anderen Punkte zu INFINITY.
+	\item Schritt 2: Wenn n die Anzahl der Knoten ist, wird jede Kante (n - 1) Mal entspannt. Entspannen bedeutet einfach, dass geprüft wird, ob es möglich ist, den Weg zu dem Knoten, auf den die Kante zeigt, zu verkürzen, und wenn dies der Fall ist, wird der Weg zum Knoten durch den entdeckten Weg ersetzt.
+	\item Schritt 3: Mit der N-ten Schleife wird geprüft, ob der Graph negative Zyklen aufweist.
 \end{itemize}
-
+Der Bellman-Ford-Algorithmus wird wie in der Abbildung \ref{fig:Bellman-Ford Pseudo-code} unten dargestellt ausgeführt.
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1.0\textwidth]{images/Bellman-Ford-Algorithmus_Pseudo-Code.PNG}
+	\caption{Bellman-Ford Pseudo-Code, angelehnt an\cite{Abusalim2020}.}
+	\label{fig:Bellman-Ford Pseudo-code}
+\end{figure}
 
 
 

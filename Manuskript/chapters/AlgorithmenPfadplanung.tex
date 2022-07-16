@@ -24,20 +24,20 @@ Nach \cite[80-82]{Russell:10} gibt es 4 Hauptkriterien nach denen Pfachsuchalgor
 \begin{itemize}
 	\item \emph{Vollständigkeit}: Liefert der Algorithmus immer eine Lösung, wenn es eine Lösung gibt?
 	\item \emph{Optimalität}: Liefert der Algorithmus einen optimalen Weg?
-	\item \emph{Zeitkomplexität}: Wie lange dauert es bis der Algorithmus einen Weg gefunden hat?
-	\item \emph{Raumkomplexität}: Wie viel Speicher wird benötigt um die Lösung zu finden?
+	\item \emph{Zeitkomplexität}: Wie lange dauert es, bis der Algorithmus einen Weg gefunden hat?
+	\item \emph{Raumkomplexität}: Wie viel Speicher wird benötigt, um die Lösung zu finden?
 \end{itemize}
 \newpage
 \subsection{Breitensuche}
 \label{Breitensuche}
 Die Breitensuche gehört zu den uninformierten Suchalgorithmen. 
-Der erste Schritt der Breitensuche ist es, wie man in Abb \ref{fig:Breitensuche} sehen kann, alle verbundenen Knoten ersten Grades des Wurzelknotens zu besuchen \cite[80-82]{Russell:10}.
+Der erste Schritt der Breitensuche ist es, wie in Abb \ref{fig:Breitensuche} zu sehen ist, alle verbundenen Knoten ersten Grades des Wurzelknotens zu besuchen \cite[80-82]{Russell:10}.
 Erst dann wird die nächste Ebene besucht. Dies wird Ebene für Ebene im Baum wiederholt, bis alle Knoten besucht wurden. 
-Die Breitensuche ist vollständig und bei z.B gleichverteilten Aktionskosten auch optimal \cite[80-82]{Russell:10}.
+Die Breitensuche ist vollständig und bei z.B gleichverteilten Pfadkosten auch optimal \cite[80-82]{Russell:10}.
 \begin{figure}
 	\centering
 	\includegraphics[width=1.0\textwidth]{images/breitensuche.png}
-	\caption{Breitensuche in einem Binärbaum. Unbesuchte Knoten werden hellgrau dargestellt, besuchte Knoten werden dunkelgrau dargestellt $\cite[80-82]{Russell:10}$.}
+	\caption{Breitensuche in einem Binärbaum. Unbesuchte Knoten werden hellgrau dargestellt, besuchte Knoten dunkelgrau $\cite[82]{Russell:10}$.}
 	\label{fig:Breitensuche}
 \end{figure}
 \\
@@ -45,22 +45,21 @@ Die Breitensuche ist vollständig und bei z.B gleichverteilten Aktionskosten auc
 \subsection{Tiefensuche}
 \label{Tiefensuche}
 Die Tiefensuche gehört ebenfalls zu den uninformierten Suchalgorithmen.
-Das Vorgehen bei der Tiefensuche ist es, wie man in Abb. \ref{fig:Tiefensuche} sehen kann, zuerst alle Unterknoten eines direkten Nachbarn (z.B Knoten $B$) des Wurzelknotens $A$ zu besuchen bis dieser 
+Das Vorgehen bei der Tiefensuche ist es, wie in Abb. \ref{fig:Tiefensuche} zu sehen ist, zuerst alle Unterknoten eines direkten Nachbarn (z.B Knoten $B$) des Wurzelknotens $A$ zu besuchen, bis dieser 
 keine unbesuchten Unterknoten mehr hat \cite[85,86]{Russell:10}.
 Erst dann wird der nächste Nachbar, in Abb. \ref{fig:Tiefensuche} Knoten $C$, in der ersten Ebene besucht, bis keine unbesuchten Knoten mehr vorhanden sind oder der Zielknoten gefunden wurde \cite[85,86]{Russell:10}.
-Es gibt 2 Versionen der Tiefensuche: die Version, die in einem Graphen einen kürzesten Weg zu einem Ziel sucht, und die Version, 
-die in einer Baumstruktur den kürzesten Weg sucht \cite[85,86]{Russell:10}.
-Nur die Version, welche in einem Graphen sucht, ist in endlicher Raumkomplexität vollständig, die Version mit Baumstruktur ist leider nicht vollständig. \cite[85,86]{Russell:10}.
-
-Die Tiefensuche ist (indirekt) an vielen komplexeren Algorithmen beteiligt. 
-So führt die iterative Vertiefungssuche die klassische Tiefensuche wiederholt und in Verbindung mit einer steigenden 
+Es gibt 2 Versionen der Tiefensuche: Die Version, die in einem Graphen den kürzesten Weg zu einem Ziel sucht, und die Version, 
+die diesen in einer Baumstruktur sucht \cite[85,86]{Russell:10}.
+Nur die Version, welche in einem Graphen sucht, ist in endlicher Raumkomplexität vollständig, die Version mit Baumstruktur nicht \cite[85,86]{Russell:10}.
+ 
+Die iterative Vertiefungssuche die klassische Tiefensuche wiederholt und in Verbindung mit einer steigenden 
 Tiefenbegrenzung aus, bis ein Ziel gefunden wird \cite[108,109]{Russell:10}.
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=1.0\textwidth]{images/tiefensuche.png}
-	\caption{Tiefensuche in einem Binärbaum. $A$ ist der Startknoten und $M$ ist der Zielknoten, unentdeckte Knoten sind hellgrau. 
-		Bereits entdeckte Knoten ohne weitere Unterknoten werden entfernt $\cite[85,86]{Russell:10}$.}
+	\caption{Tiefensuche in einem Binärbaum. $A$ ist der Startknoten, $M$ der Zielknoten; unentdeckte Knoten sind hellgrau. 
+		Bereits entdeckte Knoten, ohne weitere Unterknoten, werden entfernt $\cite[86]{Russell:10}$.}
 	\label{fig:Tiefensuche}
 \end{figure}
 

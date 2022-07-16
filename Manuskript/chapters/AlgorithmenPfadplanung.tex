@@ -7,8 +7,7 @@ Die Pfadplanung ist ein nichtdeterministisches Problem mit polynomialer Laufzeit
 der in einem System den Ausgangspunkt mit dem Ziel verbindet. Der zu wählende Weg (die beste Route) wird durch Beschränkungen 
 und Bedingungen bestimmt \cite{Karur:21}.
 
-In der Informatik, insbesondere in der Graphentheorie, ist das Problem des kürzesten Weges bekannt. Der kürzestmögliche Weg von 
-einer Quelle zu einem Ziel hat die geringsten Längenanforderung.
+In der Informatik, insbesondere in der Graphentheorie, ist das Problem des kürzesten Weges bekannt. Der kürzestmögliche Weg von einer Quelle zu einem Ziel hat die geringsten Längenanforderung.
 
 Die Dijkstra- und Bellman-Algorithmen für den kürzesten Weg sind in einer Vielzahl von Bereichen und Anwendungen
 weit verbreitet. Beispiele für diese Anwendungen sind Routing-Protokolle für Netzwerke, Routenplanung, 
@@ -71,20 +70,9 @@ Pfadwahl und wird verwendet, um den kürzesten Pfad von einem Startpunkt in eine
 
 \subsection{Funktionsprinzip}
 
-Das Grundkonzept des Algorithmus ist wie folgt:
-\\ \\
-In einem ersten Schritt wird der Startknoten festgelegt und der Abstand zwischen ihm und den anderen Knoten des Graphen berechnet. 
-Gibt es keine Kante, die diesen Knoten mit dem Startpunkt verbindet, ist der Abstand unendlich; gibt es eine Kante, die 
-diesen Knoten mit dem Startpunkt verbindet, ist der Abstand $n$; und das niedrigste Gewicht (wenn es mehrere Kanten gibt) ist $n$.
+Im Folgenden wird das Hauptkonzept des Dijkstra-Algorithmus anhand des Pseudocodes \ref{Dijkstra Algorithmus Pseudocode} erläutert
 
-Der zweite Schritt besteht darin, den Punkt mit dem kürzesten Abstand zum Startpunkt zu ermitteln und zu speichern. Die zuvor ermittelte 
-Entfernung wird mit derjenigen verglichen, die über den soeben beiseite gelegten Punkt für alle verbleibenden Punkte 
-ermittelt wurde, und nur der kleinste der beiden Werte wird beibehalten. Dieser Vorgang wird so lange wiederholt, bis es keine Punkte
-mehr gibt oder bis der Ankunftspunkt gewählt ist \cite{Zhou:19}.
-\\ \\
-Im Folgenden wird die Umsetzung des unten stehenden Pseudocodes  \ref{Dijkstra Algorithmus Pseudocode} erläutert, angelehnt an \cite{Abusalim2020}.
-
-Beim Dijkstra-Algorithmus ist die Route unbekannt. Die Knoten werden als temporär $(t)$ oder permanent $(p)$ eingestuft.
+Angelehnt an \cite{Abusalim2020}, beim Dijkstra-Algorithmus ist die Route unbekannt. Die Knoten werden als temporär $(t)$ oder permanent $(p)$ eingestuft.
 Ein temporäres Label wird geändert, wenn eine kürzere Route zu einem Knoten gefunden werden kann. Wenn keine bessere Route gefunden werden kann, wird der Status des temporären Labels in permanent geändert.
 \begin{itemize}
 	\item Schritt1: die Entfernung des Quellknotens wird der Wert Null zugewiesen $[distance (source) = 0]$, und die Entfernung der anderen
@@ -135,17 +123,6 @@ end function
 \captionof{lstlisting}{Dijkstra-Algorithmus Pseudocode, angelehnt an \cite{Abusalim2020}.}
  \label{Dijkstra Algorithmus Pseudocode}
 \end{minipage}
-
-
-\subsection{Vor- und Nachteile}
-Der Dijkstra-Algorithmus hat zwei wesentliche Vorteile: Er kann alle optimalen Pfade finden und die Trefferquote dafür liegt
-bei 100\%. Der zweite Vorteil ist, dass er die verbleibenden unerwünschten Knoten nicht besucht, wenn der beabsichtigte Zielknoten erreicht
-ist \cite{Zhou:19,Abusalim2020}.
-\\ \\
-Der Hauptnachteil des Algorithmus besteht darin, dass er eine blinde Suche durchführt, was eine erhebliche Menge an Zeit und Ressourcen vergeudet. 
-Ein weiterer Nachteil ist, dass er nicht mit negativen Kanten umgehen kann, was zu azyklischen Graphen führt, und daher nicht immer den kürzesten 
-Weg findet \cite{Mukhlif:20}.
-
 
 \section{Bellman-Ford-Algorithmus}
 \label{Bellman-Ford-Algorithmus}

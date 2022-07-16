@@ -34,14 +34,14 @@ Die Größe des mobilen Roboters bestimmt die Größe des Gitters und beeinfluss
 Die Idee ist, A*- und Dijkstra-Algorithmen miteinander zu kombinieren, um die Effizienz der Planung einer idealen kollisionsfreien Route für einen mobilen Roboter zu erhöhen. Bei der Neuplanung wird die Dijkstra-Methode zur Vorverarbeitung der statischen Umgebungskartendaten angewendet, die optimale Routen vom Ziel zu allen freien Zuständen plant und speichert. Wenn der Roboter auf seinem Weg zum Ziel auf ein bewegliches Hindernis trifft, wählt das Rolling-Window-Prinzip einen lokal optimalen Zustand als nächsten Zielzustand. Dann wird mit dem A*-Algorithmus eine lokal optimale Route von der Roboterposition zum lokalen Ziel neu geplant.
 Die neue Route kann den Roboter um Hindernisse herumführen \cite{Hong-mei17}.
 
-\newpage
+
 
 \section{Autonome Navigation}
 \label{Autonome Navigation}
 
-Pfadsuchalgorithmen werden ebenfalls im Bereich des Autonomen Fahrens, oder auch bei unbemannten Flugfahrzeugen verwendet,
-um sichere, effiziente, kollisionsfreie und kostengünstige Wege von Start zum Ziel zu führen, was die Wahl des richtigen Pfadsuchalgorithmus
-zu einer wichtigen Aufgabe macht. Es hängt unter Anderem die Geometrie des Fahrzeugs von dieser Wahl ab \cite{Karur:21}.
+Pfadsuchalgorithmen werden ebenfalls im Bereich des Autonomen Fahrens, oder auch bei unbemannten Flugfahrzeugen verwendet
+um sichere, effiziente, kollisionsfreie und kostengünstige Wege von Start zum Ziel zu führen, was die Wahl des richtigen Pfadsuchalgorithmen
+zu einer wichtigen Aufgabe macht. Es hängt unter anderen Faktoren die Geometrie des Fahrzeugs von dieser Wahl ab \cite{Karur:21}.
 Mit der zunehmenden Verbreitung von autonomen Fahrzeugen, die immer mehr Wegfindung und -planung erfordert, sind Pfadsuchalgorithmen
 zu einem neuen Schwerpunkt der autonomen Steuerung geworden \cite{Karur:21}.
 Da mobile Roboter in vielen Anwendungen eingesetzt werden, haben Forscher Methoden entwickelt, um die 
@@ -50,7 +50,7 @@ teilweise autonomen Navigation in unübersichtlichen Umgebungen zu bewältigen \
 So wird die Wahl des richtigen Pfadplanungsalgorithmus von der kinematischen Bewegungsgestaltung des Roboters/Fahrzeugs,
 den zur Verfügung stehenden Rechenressourcen, sowie der sensorischen Ausstattung des Fahrzeugs bestimmt \cite{Karur:21}.
 
-Die Leistung und Komplexität des verwendeten Algorithmus hängt vom Anwendungsfall ab \cite{Karur:21}.
+Die Leistung und Komplexität des verwendeten Algorithmus hängt auch vom Anwendungsfall ab \cite{Karur:21}.
 
-Es gibt nicht \emph{den perfekten Pfadsuchalgorithmus für Autonomes Fahren}, es finden aber viele verschiedene Algorithmen eine 
+Somit gibt es nicht \emph{den perfekten Pfadsuchalgorithmus für Autonomes Fahren}, aber es finden viele verschiedene Algorithmen eine 
 Anwendung in der autonomen Navigation.

@@ -78,17 +78,14 @@ Gibt es keine Kante, die diesen Knoten mit dem Startpunkt verbindet, ist der Abs
 diesen Knoten mit dem Startpunkt verbindet, ist der Abstand $n$; und das niedrigste Gewicht (wenn es mehrere Kanten gibt) ist $n$.
 
 Der zweite Schritt besteht darin, den Punkt mit dem kürzesten Abstand zum Startpunkt zu ermitteln und zu speichern. Die zuvor ermittelte 
-Entfernung wird mit derjenigen verglichen, die über den soeben beiseite gelegten Scheitelpunkt für alle verbleibenden Scheitelpunkte 
-ermittelt wurde, und nur der kleinste der beiden Werte wird beibehalten. Dieser Vorgang wird so lange wiederholt, bis es keine Scheitelpunkte
-mehr gibt oder bis der Ankunftsscheitelpunkt gewählt ist \cite{Zhou:19}.
-
-Der Dijkstra-Algorithmus arbeitet mit der Zuweisung einiger vorläufiger Entfernungswerte und versucht, diese schrittweise zu verbessern.
-Der Pseudocode des Algorithmus ist in der Abbildung \ref{fig:Dijkstra Pseudo-Code}  dargestellt \cite{Huang2012}.
+Entfernung wird mit derjenigen verglichen, die über den soeben beiseite gelegten Punkt für alle verbleibenden Punkte 
+ermittelt wurde, und nur der kleinste der beiden Werte wird beibehalten. Dieser Vorgang wird so lange wiederholt, bis es keine Punkte
+mehr gibt oder bis der Ankunftspunkt gewählt ist \cite{Zhou:19}.
 \\ \\
-\\ \\
-Im Folgenden wird die Umsetzung des unten stehenden Pseudocodes erläutert, angelehnt an \cite{Abusalim2020}.
+Im Folgenden wird die Umsetzung des unten stehenden Pseudocodes  \ref{Dijkstra Algorithmus Pseudocode} erläutert, angelehnt an \cite{Abusalim2020}.
 
 Beim Dijkstra-Algorithmus ist die Route unbekannt. Die Knoten werden als temporär $(t)$ oder permanent $(p)$ eingestuft.
+Ein temporäres Label wird geändert, wenn eine kürzere Route zu einem Knoten gefunden werden kann. Wenn keine bessere Route gefunden werden kann, wird der Status des temporären Labels in permanent geändert.
 \begin{itemize}
 	\item Schritt1: die Entfernung des Quellknotens wird der Wert Null zugewiesen $[distance (source) = 0]$, und die Entfernung der anderen
 		Knoten wird auf unendlich gesetzt $[distance(x) = Infinity]$.
@@ -119,17 +116,26 @@ $\textbf{function}$ DIJKSTRA (Graph, source)
 	for each vertex v in Graph:
 		distance[v] $\leftarrow$ INFINITY
 		previous[v] $\leftarrow$ UNDEFINED
+		add v to D
+	distance[source] $\leftarrow$ 0
+	
+	while D is not empty do:
+	    u $\leftarrow$ in D with min distance[u]
+	    remove u from D
+	    for each neighbour v of u:
+	          alt  $\leftarrow$ distance[u] + length(u,v)
+	          if alt < distance[v]
+	              distance[v]  $\leftarrow$  alt
+	              previous[v]  $\leftarrow$  u
+	end while
+	return distance[], previous[]
+end function
+
 \end{lstlisting}
-\captionof{lstlisting}{Dijkstra Algorithmus Pseudocode}
+\captionof{lstlisting}{Dijkstra-Algorithmus Pseudocode, angelehnt an \cite{Abusalim2020}.}
+ \label{Dijkstra Algorithmus Pseudocode}
 \end{minipage}
 
-% PSEUDOCODE BILD - LÖSCHEN
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=1.0\textwidth]{images/Dijkstra_pseudoCode.PNG}
-	\caption{Dijkstra Algorithmus Pseudo-Code, angelehnt an \cite{Abusalim2020}.}
-	\label{fig:Dijkstra Pseudo-Code}
-\end{figure}
 
 \subsection{Vor- und Nachteile}
 Der Dijkstra-Algorithmus hat zwei wesentliche Vorteile: Er kann alle optimalen Pfade finden und die Trefferquote dafür liegt
@@ -141,15 +147,15 @@ Ein weiterer Nachteil ist, dass er nicht mit negativen Kanten umgehen kann, was 
 Weg findet \cite{Mukhlif:20}.
 
 
-\section{Bellman-Ford Algorithmus}
+\section{Bellman-Ford-Algorithmus}
 \label{Bellman-Ford-Algorithmus}
 
 In 1958 veröffentlichte Richard Bellman den Bellman-Ford-Algorithmus, einen Graphen-Suchalgorithmus zur Ermittlung des kürzesten 
 Pfades \cite{Abusalim2020,Sulaiman18}.
 \subsection{Eigenschaften}
-Um kürzeste Wege auf gerichteten Graphen zu finden, nutzt der Bellman-Ford-Algorithmus die Relaxation.
+Um kürzeste Wege auf gerichteten Graphen zu finden, nutzt der Bellman-Ford-Algorithmus die Relaxation \cite{Vaibhavi2014}.
 Relaxation bedeutet, dass geprüft wird, ob es möglich ist, den Weg zu dem Knoten, auf den die Kante zeigt, zu verkürzen, 
-und wenn dies der Fall ist, wird der Weg zum Knoten durch den entdeckten Weg ersetzt.
+und wenn dies der Fall ist, wird der Weg zum Knoten durch den entdeckten Weg ersetzt \cite{Abusalim2020}.
 Der Bellman-Ford Algorithmus kann auch mit negative Kantengewichten umgehen. 
 Wenn es Zyklen mit negativem Gewicht gibt, wird der Algorithmus sie erkennen (so dass es keine Lösung gibt) \cite{Vaibhavi2014}.
 
@@ -167,7 +173,7 @@ Angelehnt an \cite{Abusalim2020} wird der Bellman-Ford-Algorithmus wie folgt aus
 	\item Schritt 2: Wenn $n$ die Anzahl der Knoten ist, wird jede Kante $(n - 1)$ Mal relaxiert. 
 	\item Schritt 3: Mit der N-ten Schleife wird geprüft, ob der Graph negative Zyklen aufweist.
 \end{itemize}
-Der Bellman-Ford-Algorithmus wird wie in Listing 2.2 unten dargestellt ausgeführt.
+Der Bellman-Ford-Algorithmus wird wie in Listing  \ref{lst:Bellman-Ford Pseudo-code} unten dargestellt ausgeführt.
 
 \noindent \\
 \begin{minipage}{1.0\textwidth} \small
@@ -176,19 +182,25 @@ $\textbf{function}$ bellmanFord (G, s)
 	for each vertex V in G:
 		distance[v] $\leftarrow$ INFINITY
 		previous[v] $\leftarrow$ NULL
-		
+	distance[s] $\leftarrow$ 0
+	for each vertex V in G
+	    for each edge(u,v) in G
+	         alt  $\leftarrow$ distance[u] + length(u,v)
+	         if alt < distance[v]
+	             distance[v] $\leftarrow$ alt
+	             previous[v] $\leftarrow$ u
+	 
+	for each edge(u,v) in G
+	       if distance[u] + length(u,v) < distance[v]
+	               Error: Negative Cycle exists
+return distance[], previous[]
+end function
+       
 \end{lstlisting}
-\captionof{lstlisting}{Bellman-Ford-Algorithmus Pseudocode}
+\captionof{lstlisting}{Bellman-Ford-Algorithmus Pseudocode, angelehnt an \cite{Abusalim2020}.}
+\label{lst:Bellman-Ford Pseudo-code}
 \end{minipage}
 
-
-% PSEUDOCODE BILD - LÖSCHEN
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=1.0\textwidth]{images/Bellman-Ford-Algorithmus_Pseudo-Code.PNG}
-	\caption{Bellman-Ford Pseudo-Code, angelehnt an\cite{Abusalim2020}.}
-	\label{fig:Bellman-Ford Pseudo-code}
-\end{figure}
 
 
 

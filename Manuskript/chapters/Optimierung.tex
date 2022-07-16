@@ -1,21 +1,21 @@
 \chapter{Optimierungsstrategien}
 \label{Optimierungsstrategien}
 
-Die Anforderungen an die Laufzeit von Algorithmen zur Pfadplanung steigt auf Grund der immer komplexer werdenden Systemen stetig weiter an. In diesem Kapitel wird beschrieben, wie die bisher vorgestellten Algorithmen zur Pfadplanung für bestimmte Anwendungsgebiete optimiert werden können.
+In diesem Kapitel wird beschrieben, wie die bisher vorgestellten Algorithmen zur Pfadplanung für bestimmte Anwendungsgebiete optimiert werden können.
 
 \section{Bidirektionale Suche}
 
-Bei der bidirektionalen Suche wird ein Suchalgorithmus simultan aus zwei Richtungen laufen gelassen – vom Startknoten zum Zielknoten und umgekehrt. Der Suchalgorithmus wird bei diesem Vorgehen so modifiziert, dass die Abbruchbedingung dann eintritt, wenn beide Suchen denselben Knoten expandieren. Somit betrachtet jede der beiden Suchen nur die Hälfte des Graphen, was in einer Reduktion der Zeitkomplexität resultiert \cite[90,91]{Russell:10}. Es ist jedoch zu beachten, dass die Raumkomplexität stark ansteigt, da in beiden Suchen eigene Priority-Queues verwaltet werden müssen. Außerdem ist es für viele Problemstellungen keinesfalls trivial, eine Suche rückwärts durchzuführen, da eine Methode zur Berechnung des Vorgängers eines Knotens gegeben sein muss \cite[90,91]{Russell:10}.
+Bei der bidirektionalen Suche wird ein Suchalgorithmus simultan aus zwei Richtungen laufen gelassen – vom Startknoten zum Zielknoten und umgekehrt. Der Suchalgorithmus wird bei diesem Vorgehen so modifiziert, dass die Abbruchbedingung dann eintritt, wenn beide Suchen denselben Knoten expandieren. Somit betrachtet jede der beiden Suchen nur die Hälfte des Graphen, was in einer Reduktion der Zeitkomplexität resultiert \cite[90,91]{Russell:10}. Es ist jedoch zu beachten, dass die Raumkomplexität stark ansteigt, da beide Suchen eine eigene Queue mit den nächsten zu expandierenden Knoten verwalten muss. Außerdem ist es für viele Problemstellungen keinesfalls trivial, eine Suche rückwärts durchzuführen, da eine Methode zur Berechnung des Vorgängers eines Knotens gegeben sein muss \cite[90,91]{Russell:10}.
 
 %Eine Implementierung der Bidirektionalen Suche ist der Bidirektionale Dijkstra Algorithmus von Vaira und Kurasova. [7] Hier wird der in Abschnitt \ref{Algorithmen zur Pfadplanung} vorgestellte Dijkstra Algorithmus so modifiziert, dass eine bidirektionale Suche von zwei Prozessen auf einem Mehrkernprozessor parallelisiert durchgeführt wird. In mehreren experimentellen Analysen konnte gezeigt werden, dass die Laufzeit des parallelen bidirektionalen Dijkstra Algorithmus bis zu drei Mal kleiner ist als die des Standard Dijkstra Algorithmus.%
 
 \section{Informed Search}
 
-Ein Ansatz, um effizienter Lösungen für das Shortest Path Problem zu finden, ist die Informed Search Strategie, bei der problemspezifisches Wissen, das über die Definition des Problems hinausgeht, bei der Lösungsfindung berücksichtigt wird. Der nächste zu expandierende Knoten auf dem Pfad zum Zielknoten wird auf Basis einer Bewertungsfunktion $f(n)$ ausgewählt. Eine Komponente dieser Bewertungsfunktion ist eine heuristische Funktion $h(n)$, die die zu erwartenden Kosten des optimalen Pfades vom Knoten $n$ zum Zielknoten berechnet \cite[92-102]{Russell:10}. Im Falle des Straßennetzes könnte hierzu die Länge der Luftlinie zwischen dem Knoten $n$ und dem Zielknoten verwendet werden \cite{Hart1968}.
-
+Ein Ansatz, um effizienter einen kürzesten Pfad in einem Graphen zu finden, ist die Informed Search Strategie, bei der problemspezifisches Wissen, das über die Definition des Problems hinausgeht, bei der Lösungsfindung berücksichtigt wird. Der nächste zu expandierende Knoten auf dem Pfad zum Zielknoten wird auf Basis einer Bewertungsfunktion $f(n)$ ausgewählt. Eine Komponente dieser Bewertungsfunktion ist eine heuristische Funktion $h(n)$, die die zu erwartenden Kosten des optimalen Pfades vom Knoten $n$ zum Zielknoten berechnet \cite[92-102]{Russell:10}. Im Falle eines Straßennetzes könnte hierzu die Länge der Luftlinie zwischen dem Knoten $n$ und dem Zielknoten verwendet werden \cite{Hart1968}.
+\newpage
 Die einfachste Umsetzung dieser Strategie ist, nur die heuristische Funktion bei der Bewertung von Knoten heranzuziehen, sodass $f(n)=h(n)$ gilt. Dieses Vorgehen wird auch Greedy Best-First Suche genannt, da in jedem Schritt versucht wird, so nahe wie möglich an den Zielknoten zu gelangen \cite[92-102]{Russell:10}. Auf diese Weise werden die Suchkosten, also die Anzahl der expandierten Knoten zwar minimiert, es kann jedoch nicht garantiert werden, dass die gefundene Lösung optimal ist \cite[92-102]{Russell:10}.
 \label{A*}
-Eine elaboriertere Umsetzung der Informed Search Strategie ist der A* Algorithmus zur Berechnung des kürzesten Pfades zwischen zwei Knoten \cite[92-102]{Russell:10}. A* basiert auf Dijkstra’s Algorithmus und erweitert diesen um eine heuristische Funktion, um die Laufzeit zu reduzieren \cite{Peralta2020}. Die Bewertungsfunktion $f(n)$ für den A*-Algorithmus setzt sich zusammen aus den Kosten des optimalen Pfades vom Startknoten bis zum Knoten $n$, $g(n)$ und einer heuristischen Funktion $h(n)$, sodass gilt:
+Eine elaboriertere Umsetzung der Informed Search Strategie ist der A* Algorithmus zur Berechnung des kürzesten Pfades zwischen zwei Knoten \cite[92-102]{Russell:10}. A* basiert auf dem Dijkstra-Algorithmus und erweitert diesen um eine heuristische Funktion, um die Laufzeit zu reduzieren \cite{Peralta2020}. Die Bewertungsfunktion $f(n)$ für den A*-Algorithmus setzt sich zusammen aus den Kosten des optimalen Pfades vom Startknoten bis zum Knoten $n$, $g(n)$ und einer heuristischen Funktion $h(n)$, sodass gilt:
 \begin{equation} \label{eq:3.1}
 	f(n)=g(n)+h(n)
 \end{equation}
@@ -79,7 +79,7 @@ Als Input wurde das Straßennetz der San Francisco Bay Area mit $330 024$ Knoten
 	\def\arraystretch{1.5}
 	\begin{tabular}{|c| c| c|}
 		\hline % horizontale Linie
-		\: \: \textbf{Algorithmus} \: \: & \: \: \textbf{Laufzeit Preprocessing} \: \: & \: \: \textbf{Laufzeit Query} \: \: \\
+		\: \: \textbf{Algorithmus} \: \: & \: \: \textbf{Laufzeit Preprocessing} \: \: & \: \: \textbf{Laufzeit Algorithmus} \: \: \\
 		\hline % horizontale Linie
 		\textit{B} & - & $30,49$\,ms  \\
 		%\hline % horizontale Linie
@@ -94,7 +94,7 @@ Als Input wurde das Straßennetz der San Francisco Bay Area mit $330 024$ Knoten
 	\label{tab:Experimentelle Analyse} % ermöglicht Verweise
 \end{table} % Ende: Tabellen-Umgebung
 
-Man kann erkennen, dass die Laufzeit der Algorithmen mit Preprocessing-Phase (\textit{ALT}, \textit{RE}, \textit{REAL}) signifikant besser ist, als die der Algorithmen ohne Preprocessing-Phase (\textit{B}). Es ist jedoch zu beachten, dass die Laufzeit der Preprocessing-Phase um einige Größenordnungen höher ist, als die Laufzeit des eigentlichen Query-Algorithmus.
+Man kann erkennen, dass die Laufzeit der Algorithmen mit Preprocessing-Phase (\textit{ALT}, \textit{RE}, \textit{REAL}) signifikant besser ist, als die der Algorithmen ohne Preprocessing-Phase (\textit{B}). Mit der Kombination des Ansatzes ALT und Reach-Based Pruning (REAL) konnte die kürzeste Laufzeit erzielt werden .Es ist jedoch zu beachten, dass die Laufzeit der Preprocessing-Phase um einige Größenordnungen höher ist, als die Laufzeit des eigentlichen Algorithmus.
 
 
 

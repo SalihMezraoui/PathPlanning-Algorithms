@@ -13,35 +13,25 @@ Bei diesen Daten handelt es sich um Informationen über Objekte auf der Erde wie
 Algorithmen für den kürzesten Weg werden in Kartenplattformen wie Google Maps verwendet, um den kürzesten Weg zwischen zwei Punkten zu ermitteln.
 Obwohl der Dijkstra-Standardalgorithmus in diesem Fall anwendbar zu sein scheint, dauert das Routing des Pfades vom Startpunkt zum Endpunkt in einer großen Datenmenge sehr lange \cite{HamidAli2020}.
 
- Um bei der Berechnung des kürzesten Weges Zeit zu sparen und eine bessere Lösung zu erhalten. Beeinflusst von \cite{HamidAli2020}, der bessere Ansatz besteht darin, vor dem Start des Dijkstra-Algorithmus einen temporären Datensatz zu erstellen und ihn so zu behandeln, als wäre er der Graph, mit dem der Algorithmus arbeiten muss. 
- Nachdem die Start- und Endknoten ermittelt wurden, wird dieser Datensatz erstellt. Der Datensatz kann anhand der Koordinaten des Start- und des Zielknotens aus den Hauptdaten ausgeschlossen werden, indem nur die Knoten ausgewählt werden, die sich innerhalb des von den beiden Knoten gebildeten Quadrats befinden.
- Es gibt andere Algorithmen, die in GIS verwendet werden können, um bessere Ergebnisse zu erzielen, wie z. B. A*.
+ Um bei der Berechnung des kürzesten Weges Zeit zu sparen und eine bessere Lösung zu erhalten. Der bessere Ansatz besteht darin, angelehnt an \cite{HamidAli2020}. Vor dem Start des Dijkstra-Algorithmus einen temporären Datensatz zu erstellen und ihn so zu behandeln, als wäre er der Graph, mit dem der Algorithmus arbeiten muss.
+ Nachdem die Start- und Endknoten ermittelt wurden, wird dieser Datensatz erstellt. Der Datensatz kann anhand der Koordinaten des Start- und des Zielknotens aus den Hauptdaten ausgeschlossen werden, indem nur die Knoten ausgewählt werden, die sich innerhalb des von den beiden Knoten gebildeten reduzierten Suchbereichs befinden.
+ 
 
 
 \newpage
 \section{Mobile Roboter}
 \label{Mobile Roboter}
-Mit der Weiterentwicklung der Internet-of-Things-Technologien in den letzten Jahren hat die Entwicklung intelligenter Städte in der Industrie große Aufmerksamkeit erlangt.
 Die Steuerung mobiler Roboter ist ein wichtiges Thema in intelligenten Städten und die Pfadplanung ist eine wichtige Komponente unter den mobilen Roboter-Technologien, die dem Roboter hilft, den Weg von einem Startpunkt zu einem Zielpunkt zu finden und dabei sicher und zuverlässig alle Hindernisse in einer statischen und dynamischen Umgebung während der Reise zu vermeiden \cite{Myung21,Hong-mei17}.
 
 \subsection{Umgebungsmodell}
-Das Rolling-Window-Prinzip wird zur Hindernisvermeidung in einer unbekannten Umgebung verwendet, während die Algorithmen Dijkstra und A* in erster Linie für die Pfadplanung in einer bekannten Umgebung eingesetzt werden.
+Das Rolling-Window-Prinzip wählt einen lokal optimalen Zielzustand innerhalb des Erfassungsbereichs der Sensoren, wenn eine mögliche Kollision vorhergesagt wird, während sich der Roboter auf dem Weg in einer unbekannten Umgebung bewegt, während die Algorithmen Dijkstra und A* in erster Linie für die Pfadplanung in einer bekannten Umgebung eingesetzt werden.
 \newline
 Da sowohl der Dijkstra- als auch der A*-Algorithmus Gitter-basierte Suchmethoden sind, sollte zunächst das Gittermodell der umgebenden Karte erstellt werden. Bei der Gittermethode wird die Karte in benachbarte Gitter gleicher Größe unterteilt. 
 Die Größe des mobilen Roboters bestimmt die Größe des Gitters und beeinflusst die Suchgenauigkeit und Effizienz des Algorithmus \cite{Hong-mei17}.
-\newline
-Das Gittermodell einer Umgebungskarte ist in der Abbildung \ref{fig:Umgebungsmodell-Grid} unten dargestellt.
-
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=0.5\textwidth]{images/Grid_Modell.PNG}
-	\caption{Umgebungsmodell angelehnt an \cite{Hong-mei17}.}
-	\label{fig:Umgebungsmodell-Grid}
-\end{figure}
 
 \subsection{Dijkstras Algorithmus und A*-Algorithmus}
 
-Die Idee ist, A*- und Dijkstra-Algorithmen miteinander zu kombinieren, um die Effizienz der Planung einer idealen kollisionsfreien Route für einen mobilen Roboter zu erhöhen. Bei der Neuplanung wird die Dijkstra-Methode zur Vorverarbeitung der statischen Umgebungskartendaten angewendet, die optimale Routen vom Ziel G zu allen freien Zuständen plant und speichert. Wenn der Roboter auf seinem Weg zum Ziel auf ein bewegliches Hindernis trifft, wählt das Rolling-Window-Prinzip einen lokal optimalen Zustand als nächsten Zielzustand. Dann wird mit dem A*-Algorithmus eine lokal optimale Route von der Roboterposition zum lokalen Ziel neu geplant.
+Die Idee ist, A*- und Dijkstra-Algorithmen miteinander zu kombinieren, um die Effizienz der Planung einer idealen kollisionsfreien Route für einen mobilen Roboter zu erhöhen. Bei der Neuplanung wird die Dijkstra-Methode zur Vorverarbeitung der statischen Umgebungskartendaten angewendet, die optimale Routen vom Ziel zu allen freien Zuständen plant und speichert. Wenn der Roboter auf seinem Weg zum Ziel auf ein bewegliches Hindernis trifft, wählt das Rolling-Window-Prinzip einen lokal optimalen Zustand als nächsten Zielzustand. Dann wird mit dem A*-Algorithmus eine lokal optimale Route von der Roboterposition zum lokalen Ziel neu geplant.
 Die neue Route kann den Roboter um Hindernisse herumführen \cite{Hong-mei17}.
 
 

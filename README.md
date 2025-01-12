@@ -4,26 +4,22 @@
 
 ## Gliederung:
 
-### David:
-1. Einleitung und Problemstellung
-2. Algorithmen zur Pfadplanung
+# Teilnehmer 1: Mohammed Salih Mezraoui
+**Inhalte:**
+- Kapitel 2.1: Algorithmen zur Pfadplanung: Einleitung
+- Kapitel 2.3: Dijkstra-Algorithmus
+- Kapitel 2.4: Bellman-Ford-Algorithmus
+- Kapitel 4.1: GIS (Geoinformationssystem)
+- Kapitel 4.2: Mobile Roboter
 
-### Salih:
-3. Einführung in die Pfadplanung
-4. Uninformierter Ansatz
+# Teilnehmer 2: David Gruber
+**Inhalte:**
+- Kapitel 1: Einleitung und Problemstellung
+- Kapitel 2.2: Uninformierte Suche
+- Kapitel 4.3: Autonome Navigation
+- Kapitel 5: Zusammenfassung und Ausblick
 
-### Salih:
-5. Dijkstra-Algorithmus
-6. Bellman-Ford-Algorithmus
+# Teilnehmer 3: Marius Müller
+**Inhalte:**
+- Kapitel 3: Optimierungsstrategien
 
-### Marius:
-7. Möglichkeiten zur Optimierung
-
-### Salih:
-8. Anwendungen
-   - GIS (Geoinformationssysteme)
-   - Mobile Roboter mit verbessertem Dijkstra-Algorithmus
-
-### David:
-9. Autonome Navigation
-10. Zusammenfassung und Ausblick

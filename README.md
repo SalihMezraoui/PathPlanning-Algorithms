@@ -1,26 +1,29 @@
 # Wissenschaftliches Arbeiten - Aufbau
 
-## Thema: Funktionsprinzipien und Anwendungen von Algorithmen zur Pfadplanung
+**Thema:** Funktionsprinzipien und Anwendungen von Algorithmen zur Pfadplanung
 
-## Gliederung: 
+## Gliederung:
 
-DAVID: 
-1. Einleitung und Problemstellung 
+### David:
+1. Einleitung und Problemstellung
 2. Algorithmen zur Pfadplanung
-  - SALIH: Was ist Pfadplanung?
-  - Uninformierter Ansatz
-  - SALIH: Dijkstra's Algorithm
-  - SALIH: Bellman-Ford 
 
-MARIUS:  
-3. Möglichkeiten zur Optimierung 
+### Salih:
+3. Einführung in die Pfadplanung
+4. Uninformierter Ansatz
 
-SALIH:  
-4. Anwendungen
-  - GIS(Geoinformationssystem)
-  - Mobile Roboter mit verbessertem Dijkstra-Algorithmus
-  - DAVID: Autonome Navigation
+### Salih:
+5. Dijkstra-Algorithmus
+6. Bellman-Ford-Algorithmus
 
-DAVID:  
-5. Zusammenfassung und Ausblick
+### Marius:
+7. Möglichkeiten zur Optimierung
 
+### Salih:
+8. Anwendungen
+   - GIS (Geoinformationssysteme)
+   - Mobile Roboter mit verbessertem Dijkstra-Algorithmus
+
+### David:
+9. Autonome Navigation
+10. Zusammenfassung und Ausblick

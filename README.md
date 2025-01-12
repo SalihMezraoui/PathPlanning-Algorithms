@@ -4,7 +4,7 @@
 
 ## Gliederung:
 
-# Teilnehmer 1:  Salih Mezraoui
+# Teilnehmer 1:  Mohammed Salih Mezraoui
 **Inhalte:**
 - Kapitel 2.1: Algorithmen zur Pfadplanung: Einleitung
 - Kapitel 2.3: Dijkstra-Algorithmus

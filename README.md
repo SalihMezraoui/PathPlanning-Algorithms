@@ -1,6 +1,6 @@
 # Wissenschaftliches Arbeiten - Aufbau
 
-This project was developed as part of the *Wissenschaftliches Arbeiten* module at Hochschule Trier, where I received a grade of 2.7.
+This project was developed as part of the *Wissenschaftliches Arbeiten* module at Hochschule Trier, where I received a grade of **2.7**.
 
 **Thema:** Funktionsprinzipien und Anwendungen von Algorithmen zur Pfadplanung
 
